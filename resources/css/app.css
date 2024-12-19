@@ -1,3 +1,97 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-block-start: 0.83rem;
+    margin-block-end: 0.83rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-block-start: 0.83rem;
+    margin-block-end: 0.83rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-block-start: 0.83rem;
+    margin-block-end: 0.83rem;
+}
+
+@font-face {
+    font-family: 'PT Sans';
+    font-style: normal;
+    font-weight: normal;
+    src: local('PT Sans'), url('/storage/fonts/PTSRegular.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'PT Sans';
+    font-style: italic;
+    font-weight: normal;
+    src: local('PT Sans Italic'), url('/storage/fonts/PTSItalic.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'PT Sans';
+    font-style: normal;
+    font-weight: bold;
+    src: local('PT Sans Bold'), url('/storage/fonts/PTSBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'PT Sans';
+    font-style: italic;
+    font-weight: 700;
+    src: local('PT Sans Bold Italic'), url('/storage/fonts/PTSBoldItalic.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'PT Sans';
+    font-style: normal;
+    font-weight: normal;
+    src: local('PT Sans Hrvatska Lijeva'), url('/storage/fonts/PTSRegular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'PT Sans Narrow';
+    font-style: normal;
+    font-weight: normal;
+    src: local('PT Sans Narrow'), url('/storage/fonts/PTSNarrowRegular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'PT Sans Narrow';
+    font-style: normal;
+    font-weight: 700;
+    src: local('PT Sans Narrow Bold'), url('/storage/fonts/PTSNarrowBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Amatic SC';
+    font-style: normal;
+    font-weight: bold;
+    src: local('Amatic SC Bold'), url('/storage/fonts/AmaticSC-Bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Amatic SC';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Amatic SC'), url('/storage/fonts/AmaticSC-Regular.woff') format('woff');
+}
+
+
+* {
+    letter-spacing: 0.025rem;
+    font-family: 'PT Sans', sans-serif;
+}
+
+

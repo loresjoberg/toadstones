@@ -1,11 +1,16 @@
+import '@mantine/core/styles.css';
 import '../css/app.css';
+import '../css/font-face.css';
 import './bootstrap';
 
 import { createInertiaApp } from '@inertiajs/react';
+import { createTheme, MantineProvider } from '@mantine/core';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+
+const theme = createTheme({});
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -17,7 +22,11 @@ createInertiaApp({
     setup({ el, App, props }) {
         const root = createRoot(el);
 
-        root.render(<App {...props} />);
+        root.render(
+            <MantineProvider theme={theme}>
+                <App {...props} />
+            </MantineProvider>,
+        );
     },
     progress: {
         color: '#4B5563',

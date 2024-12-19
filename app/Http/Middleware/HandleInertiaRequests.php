@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Section;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -29,8 +30,11 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $sections = Section::all();
         return [
+
             ...parent::share($request),
+            'sections' => $sections,
             'auth' => [
                 'user' => $request->user(),
             ],
