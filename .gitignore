@@ -156,3 +156,4 @@ dist
 /public/
 /src/data/
 /src/favicon.ico
+/resources/js/config/config.tsx
