@@ -13,7 +13,7 @@ class HomePageController extends Controller
     public function show(): Response
     {
         $features = Feature::all();
-        return Inertia::render('HomePage',['features' => $features]);
+        return Inertia::render('HomePage', ['features' => $features]);
     }
 
 }

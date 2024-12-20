@@ -1,15 +1,16 @@
 import { ThumbStack } from '@/components/ThumbStack/ThumbStack';
-import { dsColors } from '@/config/dsColors';
-import { Container, Flex, Title } from '@mantine/core';
-import FrontLayout from "@/Layouts/FrontLayout";
+import FrontLayout from '@/Layouts/FrontLayout';
+import { Container, Flex, Title, Text } from '@mantine/core';
+import { Head } from '@inertiajs/react';
 
 export default function SearchPage({ query, features }) {
     return (
         <FrontLayout>
+            <Head title="Search Results"/>
             <Container>
                 <Title order={2} mb="lg">
                     Search results for{' '}
-                    <span style={{ color: dsColors.lightPurple }}>{query}</span>
+                    <Text c="secondary.3">{query}</Text>
                 </Title>
                 <Flex direction="row" gap="2rem">
                     {features.length ? (

@@ -1,24 +1,21 @@
-import {
-    Box,
-    Container,
-    Title
-} from "@mantine/core";
-import React, { useEffect, useState } from "react";
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { DataTable, DataTableSortStatus } from "mantine-datatable";
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import { Feature } from '@/types/toadstones';
+import { Link } from '@inertiajs/react';
+import { Box, Container, Title } from '@mantine/core';
 import '@mantine/core/styles.layer.css';
+import { sortBy } from 'lodash';
+import { DataTable, DataTableSortStatus } from 'mantine-datatable';
 import 'mantine-datatable/styles.layer.css';
-import { Link } from "@inertiajs/react";
-import { Feature } from "@/types/toadstones";
-import { sortBy } from "lodash";
-
+import { useEffect, useState } from 'react';
 
 interface FeatureListProps {
-    features: Feature[]
+    features: Feature[];
 }
 
 export default function FeatureList({ features }: FeatureListProps) {
-    const [sortStatus, setSortStatus] = useState<DataTableSortStatus<Feature[]>>({
+    const [sortStatus, setSortStatus] = useState<
+        DataTableSortStatus<Feature[]>
+    >({
         columnAccessor: 'title',
         direction: 'asc',
     });
@@ -53,16 +50,24 @@ export default function FeatureList({ features }: FeatureListProps) {
                             title: '#',
                             textAlign: 'right',
                             width: 40,
-                            render: (feature) => { return <Link href={`/admin/edit-feature/${feature.slug}`}>Edit</Link> }
+                            render: (feature) => {
+                                return (
+                                    <Link
+                                        href={`/admin/edit-feature/${feature.slug}`}
+                                    >
+                                        Edit
+                                    </Link>
+                                );
+                            },
                         },
-                        { accessor: "title", sortable: true },
-                        { accessor: "launch", sortable: true }
+                        { accessor: 'title', sortable: true },
+                        { accessor: 'launch', sortable: true },
                     ]}
                     sortStatus={sortStatus}
-                    onSortStatusChange={setSortStatus}>
-                </DataTable>
+                    onSortStatusChange={setSortStatus}
+                ></DataTable>
                 <Box mt="2rem">
-                    <Link href={"/admin/new-feature"}>Add New Feature</Link>
+                    <Link href={'/admin/new-feature'}>Add New Feature</Link>
                 </Box>
             </Container>
         </AuthenticatedLayout>

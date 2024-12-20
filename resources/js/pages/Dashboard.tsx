@@ -1,6 +1,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head, Link } from "@inertiajs/react";
-import { Stack, Title } from "@mantine/core";
+import { Head, Link } from '@inertiajs/react';
+import { Stack, Title } from '@mantine/core';
+import { config } from '@/config/config';
 
 export default function Dashboard() {
     return (
@@ -11,16 +12,20 @@ export default function Dashboard() {
                 </h2>
             }
         >
-            <Head title="Bad Gods Dashboard" />
+            <Head title={`${config.siteName} Dashboard`} />
 
             <div className="py-12">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900">
-                            <Title order={1}>Bad Gods Admin</Title>
+                            <Title order={1}>{config.siteName} Admin</Title>
                             <Stack mt="2rem">
-                                <Link href="/admin/list-features">List Features</Link>
-                                <Link href="/admin/new-feature">Add New Feature</Link>
+                                <Link href="/admin/list-features">
+                                    List Features
+                                </Link>
+                                <Link href="/admin/new-feature">
+                                    Add New Feature
+                                </Link>
                             </Stack>
                         </div>
                     </div>

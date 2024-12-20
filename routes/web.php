@@ -6,6 +6,7 @@ use App\Http\Controllers\FeaturePageController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\TestController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -38,6 +39,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin/list-features', [FeatureController::class, 'list'])->name('list-features');
     Route::post('/api/features', [FeatureController::class, 'store'])->name('new-feature.store');
     Route::put('/api/features', [FeatureController::class, 'update'])->name('edit-feature.update');
+    Route::put('/api/test', [TestController::class, 'testPut'])->name('test.put');
+    Route::get('/api/test', [TestController::class, 'testGet'])->name('test.get');
+    Route::post('/api/test', [TestController::class, 'testPost'])->name('test.post');
 });
 
 

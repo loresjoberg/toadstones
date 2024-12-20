@@ -13,8 +13,8 @@ class FeaturePageController extends Controller
     public function show($slug): Response
     {
         $feature = Feature::where('slug', $slug)->get();
-        Log::debug($feature[0],['feature']);
-        return Inertia::render('Features/FeaturePage',['feature' => $feature[0]]);
+        Log::debug($feature[0], ['feature']);
+        return Inertia::render('Features/FeaturePage', ['feature' => $feature[0]]);
     }
 
 }

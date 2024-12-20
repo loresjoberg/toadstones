@@ -6,7 +6,7 @@ export interface RawFeature {
     status: string;
     views: number;
     slug: string;
-    html?: string
+    html?: string;
     medium?: string;
     mediaLocation?: string;
     thumbLocation: string;
@@ -24,7 +24,7 @@ export interface Feature {
     url: string;
     launch: Date;
     slug: string;
-    html?: string
+    html?: string;
     medium?: string;
     isPopular: boolean;
 }
@@ -36,13 +36,13 @@ export interface Section {
 }
 
 export interface PageProps {
-    pageData: Feature
+    pageData: Feature;
 }
 
 export interface SiteLinkProps {
-    text: string,
-    href: string,
-    color: string,
+    text: string;
+    href: string;
+    color: string;
 }
 
 export interface SiteLink {
@@ -51,10 +51,27 @@ export interface SiteLink {
 }
 
 export interface LinksProps {
-    socialLinks: SiteLink[]
+    socialLinks: SiteLink[];
 }
 
 export interface SelectorOption {
-    label: string,
-    value: string
+    label: string;
+    value: string;
+}
+
+export interface FeatureFormValues {
+    title: string;
+    slug: string;
+    section_id: number;
+    medium: string;
+    html: string;
+    imageFile?: File;
+    videoFile?: File;
+    thumbnailFile?: File;
+    imageUrl: string;
+    videoUrl: string;
+    thumbnailUrl: string;
+    status: string;
+    isPopular: boolean;
+    launch: Date;
 }

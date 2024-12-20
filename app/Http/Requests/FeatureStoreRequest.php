@@ -19,16 +19,16 @@ class FeatureStoreRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'lowercase', 'alpha_dash:ascii', 'max:255','unique:features'],
+            'slug' => ['required', 'string', 'lowercase', 'alpha_dash:ascii', 'max:255', 'unique:features'],
 //            'launch' => ['required', 'string', 'max:255','date_format:yyyy-mm-dd h:i:s'],
             'launch' => ['required', 'string', 'max:255'],
-            'status' => ['required', 'string', 'lowercase', 'alpha_dash:ascii','max:255'],
+            'status' => ['required', 'string', 'lowercase', 'alpha_dash:ascii', 'max:255'],
             'section_id' => ['required', 'integer', 'numeric'],
-            'medium' => ['required', 'string',  'lowercase', 'max:255'],
-            'html' => ['string','nullable'],
-            'image' => ['file','image','nullable'],
-            'video'  => ['file','mimetypes:video/mpeg','nullable'],
-            'thumbnail'  => ['file', 'image'],
+            'medium' => ['required', 'string', 'lowercase', 'max:255'],
+            'html' => ['string', 'nullable'],
+            'image' => ['file', 'image', 'nullable'],
+            'video' => ['file', 'mimetypes:video/mpeg', 'nullable'],
+            'thumbnail' => ['file', 'image'],
             'isPopular' => ['required', 'boolean', 'max:255'],
         ];
 
