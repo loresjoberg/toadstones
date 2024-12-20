@@ -53,3 +53,8 @@ export interface SiteLink {
 export interface LinksProps {
     socialLinks: SiteLink[]
 }
+
+export interface SelectorOption {
+    label: string,
+    value: string
+}
