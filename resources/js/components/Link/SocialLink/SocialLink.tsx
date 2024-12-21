@@ -1,10 +1,10 @@
 import { SiteLinkProps } from '@/types/toadstones';
 import { Link } from '@inertiajs/react';
-import { MantineColor, StyleProp, Text } from '@mantine/core';
+import { Anchor, MantineColor, StyleProp, Text } from '@mantine/core';
 
 export function SocialLink({ text, href, color }: SiteLinkProps) {
     return (
-        <Link href={href}>
+        <Anchor component={Link}  href={href}>
             <Text
                 ff="Amatic SC"
                 fw="bold"
@@ -14,6 +14,6 @@ export function SocialLink({ text, href, color }: SiteLinkProps) {
             >
                 {text}
             </Text>
-        </Link>
+        </Anchor>
     );
 }

@@ -1,4 +1,4 @@
-import { NavLink } from '@/components/Link/NavLink/Navlink';
+import { NavBarLink } from '@/components/Link/NavLink/NavBarLink';
 import { SearchForm } from '@/components/SearchForm/SearchForm';
 import { SiteLink } from '@/types/toadstones';
 import { Box, Container, Group } from '@mantine/core';
@@ -21,7 +21,7 @@ export function NavBar({ navLinks, search, stageWidth }: NavLinksProps) {
                     mb="md"
                 >
                     {navLinks.map((link) => (
-                        <NavLink
+                        <NavBarLink
                             color="secondary.9"
                             key={link.href}
                             text={link.text}

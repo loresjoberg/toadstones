@@ -3,7 +3,7 @@ import { ThumbRows } from '@/components/ThumbRows/ThumbRows';
 import classes from '@/pages/Home.module.css';
 import { Feature } from '@/types/toadstones';
 import { Link } from '@inertiajs/react';
-import { Center, Stack, Text } from '@mantine/core';
+import { Anchor, Center, Stack, Text } from '@mantine/core';
 
 interface MainProps {
     mainFeature: Feature;
@@ -16,7 +16,7 @@ export function MainColumn({ mainFeature, features }: MainProps) {
             <FeaturedStack feature={mainFeature} />
             <ThumbRows features={features} />
             <Center bg="primary.3">
-                <Link href="/archive">
+                <Anchor component={Link}  href="/archive">
                     <Text
                         lh={2}
                         c="primary.6"
@@ -26,7 +26,7 @@ export function MainColumn({ mainFeature, features }: MainProps) {
                     >
                         View All
                     </Text>
-                </Link>
+                </Anchor>
             </Center>
         </Stack>
     );

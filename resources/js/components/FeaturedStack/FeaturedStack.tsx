@@ -1,7 +1,7 @@
 import { config } from '@/config/config';
 import { Feature } from '@/types/toadstones';
 import { Link } from '@inertiajs/react';
-import { Image, Stack, Text, Title } from '@mantine/core';
+import { Anchor, Image, Stack, Text, Title } from '@mantine/core';
 
 interface FeaturedStackProps {
     feature: Feature;
@@ -10,13 +10,13 @@ interface FeaturedStackProps {
 export function FeaturedStack({ feature }: FeaturedStackProps) {
     return (
         <Stack gap={0}>
-            <Link href={feature.url}>
+            <Anchor component={Link}  href={feature.url}>
                 <Image
                     style={{ border: '1px solid black' }}
                     src={`${config.mediaBase}/${feature.thumbLocation}`}
                     alt={feature.title}
                 />
-            </Link>
+            </Anchor>
             <Text
                 size="md"
                 ff="PT Sans Narrow"
@@ -26,7 +26,7 @@ export function FeaturedStack({ feature }: FeaturedStackProps) {
             >
                 {feature.sectionTitle}
             </Text>
-            <Link href={feature.url}>
+            <Anchor component={Link}  href={feature.url}>
                 <Title
                     order={2}
                     c="secondary.6"
@@ -35,7 +35,7 @@ export function FeaturedStack({ feature }: FeaturedStackProps) {
                 >
                     {feature.title}
                 </Title>
-            </Link>
+            </Anchor>
         </Stack>
     );
 }

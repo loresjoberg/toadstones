@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { Image, Stack, Text, Title } from '@mantine/core';
+import { Anchor, Image, Stack, Text, Title } from '@mantine/core';
 
 interface ArchiveStackProps {
     thumb?: string;
@@ -25,13 +25,13 @@ export function ArchiveStack({
 
     return (
         <Stack w="200px" gap="0">
-            <Link href={destination}>
+            <Anchor component={Link}  href={destination}>
                 <Image
                     src={thumb}
                     alt={title}
                     style={{ borderRadius: '0 3rem 0 3rem' }}
                 />
-            </Link>
+            </Anchor>
             <Text
                 size="sm"
                 fw={700}
@@ -41,7 +41,7 @@ export function ArchiveStack({
             >
                 {formatDate(launch)}
             </Text>
-            <Link href={destination}>
+            <Anchor component={Link}  href={destination}>
                 <Title
                     c="secondary.6"
                     order={3}
@@ -51,7 +51,7 @@ export function ArchiveStack({
                 >
                     {title}
                 </Title>
-            </Link>
+            </Anchor>
         </Stack>
     );
 }

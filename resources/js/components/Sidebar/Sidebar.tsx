@@ -8,7 +8,7 @@ interface SidebarProps {
 }
 
 // function StoreLink() {
-//     return <Link href="https://dogsandsorcerers.creator-spring.com/" >
+//     return <Anchor component={Link}  href="https://dogsandsorcerers.creator-spring.com/" >
 //         <Image src="/img/store-ad.png" mb="xs" alt="Visit the Bad Gods Store"/>
 //     </Anchor>;
 // }

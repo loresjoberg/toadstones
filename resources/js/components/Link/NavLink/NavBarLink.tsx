@@ -3,7 +3,7 @@ import { Link } from '@inertiajs/react';
 import { Anchor, Box } from '@mantine/core';
 import classes from './NavLinkClasses.module.css';
 
-export function NavLink({ text, href, color }: SiteLinkProps) {
+export function NavBarLink({ text, href }: SiteLinkProps) {
     return (
         <Anchor component={Link} href={href}>
             <Box
