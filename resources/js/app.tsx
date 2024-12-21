@@ -3,6 +3,7 @@ import '../css/app.css';
 import '../css/font-face.css';
 import './bootstrap';
 
+
 import { createInertiaApp } from '@inertiajs/react';
 import { createTheme, MantineProvider, MantineThemeOverride } from '@mantine/core';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
@@ -19,6 +20,7 @@ const theme = createTheme({
     }
 } as MantineThemeOverride);
 
+
 createInertiaApp({
     title: (title) => {
         if (title === appName) {
@@ -28,17 +30,13 @@ createInertiaApp({
     },
     resolve: (name) =>
         resolvePageComponent(
-            `./Pages/${name}.tsx`,
-            import.meta.glob('./Pages/**/*.tsx')
+            `./pages/${name}.tsx`,
+            import.meta.glob('./pages/**/*.tsx')
         ),
     setup({ el, App, props }) {
         const root = createRoot(el);
 
-        root.render(
-            <MantineProvider theme={theme}>
-                <App {...props} />
-            </MantineProvider>
-        );
+        root.render(<App {...props} />);
     },
     progress: {
         color: '#4B5563'
