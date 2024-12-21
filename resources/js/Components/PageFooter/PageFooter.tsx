@@ -1,5 +1,4 @@
 import { SocialLinks } from '@/components/Links/SocialLinks/SocialLinks';
-import { dsColors } from '@/config/dsColors';
 import { SiteLink } from '@/types/toadstones';
 import { Box, Container, Group, Stack } from '@mantine/core';
 

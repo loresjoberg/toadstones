@@ -1,6 +1,5 @@
 import { NavLink } from '@/components/Link/NavLink/Navlink';
 import { SearchForm } from '@/components/SearchForm/SearchForm';
-import { dsColors } from '@/config/dsColors';
 import { SiteLink } from '@/types/toadstones';
 import { Box, Container, Group } from '@mantine/core';
 

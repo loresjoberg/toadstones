@@ -1,6 +1,5 @@
 import { ArchiveStack } from '@/components/ArchiveStack/ArchiveStack';
 import { config } from '@/config/config';
-import { dsColors } from '@/config/dsColors';
 import FrontLayout from '@/Layouts/FrontLayout';
 import { PagePropsInterface } from '@/pages/HomePage';
 import { formatFeatures } from '@/util/data-access';

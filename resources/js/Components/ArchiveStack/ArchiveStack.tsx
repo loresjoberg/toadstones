@@ -1,4 +1,3 @@
-import { dsColors } from '@/config/dsColors';
 import { Link } from '@inertiajs/react';
 import { Image, Stack, Text, Title } from '@mantine/core';
 

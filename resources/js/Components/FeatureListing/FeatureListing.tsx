@@ -1,4 +1,3 @@
-import { dsColors } from '@/config/dsColors';
 import { Group, Image, Text } from '@mantine/core';
 import '@mantine/core/styles.layer.css';
 import 'mantine-datatable/styles.layer.css';

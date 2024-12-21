@@ -1,5 +1,4 @@
 import { config } from '@/config/config';
-import { dsColors } from '@/config/dsColors';
 import classes from '@/pages/Home.module.css';
 import { Feature } from '@/types/toadstones';
 import { Link } from '@inertiajs/react';

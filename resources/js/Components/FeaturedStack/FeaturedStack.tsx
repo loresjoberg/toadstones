@@ -1,5 +1,4 @@
 import { config } from '@/config/config';
-import { dsColors } from '@/config/dsColors';
 import { Feature } from '@/types/toadstones';
 import { Link } from '@inertiajs/react';
 import { Image, Stack, Text, Title } from '@mantine/core';

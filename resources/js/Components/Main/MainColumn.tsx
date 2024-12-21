@@ -1,6 +1,5 @@
 import { FeaturedStack } from '@/components/FeaturedStack/FeaturedStack';
 import { ThumbRows } from '@/components/ThumbRows/ThumbRows';
-import { dsColors } from '@/config/dsColors';
 import classes from '@/pages/Home.module.css';
 import { Feature } from '@/types/toadstones';
 import { Link } from '@inertiajs/react';

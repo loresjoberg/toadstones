@@ -1,5 +1,4 @@
 import { SocialLink } from '@/components/Link/SocialLink/SocialLink';
-import { dsColors } from '@/config/dsColors';
 import { LinksProps } from '@/types/toadstones';
 import { Stack } from '@mantine/core';
 
