@@ -6,13 +6,19 @@ import { formatFeatures } from '@/util/data-access';
 import { Head, usePage } from '@inertiajs/react';
 import { Center, Container, Flex, Loader, Title } from '@mantine/core';
 import _ from 'lodash';
+import { Feature, Section } from '@/types/toadstones';
 
-export default function ArchivePage({ section, features }) {
+
+type ArchivePageTypes = {
+    section: Section,
+    features: Feature[]
+}
+
+export default function ArchivePage({ section, features }: ArchivePageTypes) {
     const { sections } = usePage<PagePropsInterface>().props;
-
     const formattedFeatures = formatFeatures(features, sections);
-
     const archiveTitle = section ? `${section.title} Archive` : 'Archive';
+
     return _.isEmpty(formattedFeatures) ? (
         <Center mt="5rem">
             <Loader />

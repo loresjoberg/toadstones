@@ -1,5 +1,5 @@
 import { HeaderBanner } from '@/components/HeaderBanner/HeaderBanner';
-import { NavBar } from '@/Components/Links/NavLinks/NavBar';
+import { NavBar } from '@/components/Links/NavLinks/NavBar';
 import { SiteLink } from '@/types/toadstones';
 
 interface PageHeaderProps {

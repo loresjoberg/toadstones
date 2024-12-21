@@ -1,4 +1,4 @@
-import { FeatureForm } from '@/Components/Forms/FeatureForm/FeatureForm';
+import { FeatureForm } from '@/components/Forms/FeatureForm/FeatureForm';
 import { router } from '@inertiajs/react';
 import { Box, Container, Title } from '@mantine/core';
 

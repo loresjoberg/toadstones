@@ -1,5 +1,5 @@
-import { MainColumn } from '@/Components/Main/MainColumn';
-import { Sidebar } from '@/Components/Sidebar/Sidebar';
+import { MainColumn } from '@/components/Main/MainColumn';
+import { Sidebar } from '@/components/Sidebar/Sidebar';
 import { config } from '@/config/config';
 import FrontLayout from '@/Layouts/FrontLayout';
 import { Feature, Section } from '@/types/toadstones';

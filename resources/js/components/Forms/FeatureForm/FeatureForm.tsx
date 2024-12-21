@@ -1,4 +1,4 @@
-import { FileUpload } from '@/Components/Forms/FileUpload/FileUpload';
+import { FileUpload } from '@/components/Forms/FileUpload/FileUpload';
 import { FeatureFormValues } from '@/types/toadstones';
 import {
     Button,
@@ -9,15 +9,14 @@ import {
     NativeSelect,
     Stack,
     Textarea,
-    TextInput,
+    TextInput
 } from '@mantine/core';
 import { DateTimePicker } from '@mantine/dates';
 import '@mantine/dropzone/styles.css';
 import { useForm } from '@mantine/form';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FaVideo } from 'react-icons/fa';
 import { usePage } from '@inertiajs/react';
-import { PagePropsInterface } from '@/pages/HomePage';
 
 interface FeatureFormProps {
     initialValues: FeatureFormValues;
@@ -30,41 +29,42 @@ export function FeatureForm({ initialValues, submitRoute }: FeatureFormProps) {
     const [imagePreview, setImagePreview] = useState(<></>);
     const [videoPreview, setVideoPreview] = useState(<></>);
 
-    const  {sections}  = usePage().props;
+    const { sections } = usePage().props;
 
     const sectionOptions = sections.map((section) => {
-        return { label: section.title , value: section.id }
-    })
+        return { label: section.title, value: section.id };
+    });
 
-    useEffect(() => {
-        if (initialValues.thumbnailUrl) {
-            setThumbnailPreview(
-                <Image
-                    src={initialValues.thumbnailUrl}
-                    maw="200px"
-                    onLoad={() =>
-                        URL.revokeObjectURL(initialValues.thumbnailUrl)
-                    }
-                />,
-            );
-        }
-        if (initialValues.imageUrl) {
-            setImagePreview(
-                <Image
-                    src={initialValues.imageUrl}
-                    maw="200px"
-                    onLoad={() => URL.revokeObjectURL(initialValues.imageUrl)}
-                />,
-            );
-        }
-        if (initialValues.videoUrl) {
-            setVideoPreview(
-                <Center fz="4rem" bd="2px solid black">
-                    <FaVideo />
-                </Center>,
-            );
-        }
-    }, []);
+
+    if (initialValues.thumbnailUrl) {
+        setThumbnailPreview(
+            <Image
+                src={initialValues.thumbnailUrl}
+                maw="200px"
+                onLoad={() =>
+                    URL.revokeObjectURL(initialValues.thumbnailUrl)
+                }
+            />
+        );
+    }
+
+    if (initialValues.imageUrl) {
+        setImagePreview(
+            <Image
+                src={initialValues.imageUrl}
+                maw="200px"
+                onLoad={() => URL.revokeObjectURL(initialValues.imageUrl)}
+            />
+        );
+    }
+    if (initialValues.videoUrl) {
+        setVideoPreview(
+            <Center fz="4rem" bd="2px solid black">
+                <FaVideo />
+            </Center>
+        );
+    }
+
 
     const form = useForm({
         mode: 'uncontrolled',
@@ -73,7 +73,7 @@ export function FeatureForm({ initialValues, submitRoute }: FeatureFormProps) {
             title: (value) => (value ? null : 'Title Required'),
             slug: (value) => (value ? null : 'Slug Required'),
             thumbnail: (value) => (value ? null : 'Thumbnail Required'),
-            launch: (value) => (value ? null : 'Launch Required'),
+            launch: (value) => (value ? null : 'Launch Required')
         },
         transformValues: (values) => ({
             title: values.title,
@@ -86,7 +86,7 @@ export function FeatureForm({ initialValues, submitRoute }: FeatureFormProps) {
             status: values.status,
             isPopular: !!values.isPopular,
             thumbnail: values.thumbnail,
-            launch: formatDate(values.launch),
+            launch: formatDate(values.launch)
         }),
         onValuesChange: (values) => {
             setFeatureMedium(values.medium);
@@ -99,7 +99,7 @@ export function FeatureForm({ initialValues, submitRoute }: FeatureFormProps) {
             if (values.video) {
                 setUpPreview(values.video, 'video');
             }
-        },
+        }
     });
 
     const setUpPreview = (fileObject, type) => {
@@ -111,7 +111,7 @@ export function FeatureForm({ initialValues, submitRoute }: FeatureFormProps) {
                     src={imageUrl}
                     maw="200px"
                     onLoad={() => URL.revokeObjectURL(imageUrl)}
-                />,
+                />
             );
         }
 
@@ -121,7 +121,7 @@ export function FeatureForm({ initialValues, submitRoute }: FeatureFormProps) {
                     src={imageUrl}
                     maw="200px"
                     onLoad={() => URL.revokeObjectURL(imageUrl)}
-                />,
+                />
             );
         }
 
@@ -129,7 +129,7 @@ export function FeatureForm({ initialValues, submitRoute }: FeatureFormProps) {
             setVideoPreview(
                 <Center fz="4rem" bd="2px solid black">
                     <FaVideo />
-                </Center>,
+                </Center>
             );
         }
     };
@@ -184,7 +184,7 @@ export function FeatureForm({ initialValues, submitRoute }: FeatureFormProps) {
                         data={[
                             { label: 'image', value: 'image' },
                             { label: 'video', value: 'video' },
-                            { label: 'html', value: 'html' },
+                            { label: 'html', value: 'html' }
                         ]}
                         key={form.key('medium')}
                         {...form.getInputProps('medium')}
@@ -197,7 +197,7 @@ export function FeatureForm({ initialValues, submitRoute }: FeatureFormProps) {
                             { label: 'active', value: 'active' },
                             { label: 'inactive', value: 'inactive' },
                             { label: 'draft', value: 'draft' },
-                            { label: 'archived', value: 'archived' },
+                            { label: 'archived', value: 'archived' }
                         ]}
                         key={form.key('status')}
                         {...form.getInputProps('status')}
@@ -250,7 +250,7 @@ export function FeatureForm({ initialValues, submitRoute }: FeatureFormProps) {
                         label="Popular"
                         key={form.key('isPopular')}
                         {...form.getInputProps('isPopular', {
-                            type: 'checkbox',
+                            type: 'checkbox'
                         })}
                     />
                 </Group>
