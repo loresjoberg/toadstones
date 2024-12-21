@@ -3,7 +3,7 @@ import { PageHeader } from '@/components/PageHeader/PageHeader';
 import { config } from '@/config/config';
 import { SiteLink } from '@/types/toadstones';
 import { Head } from '@inertiajs/react';
-import { Container } from '@mantine/core';
+import { Container, MantineProvider } from '@mantine/core';
 import { PropsWithChildren } from 'react';
 
 const navLinks: SiteLink[] = config.navigationLinks;
@@ -13,7 +13,7 @@ export default function FrontLayout({ children }: PropsWithChildren) {
     const stageWidth = '1120px';
 
     return (
-        <>
+        <MantineProvider>
             <PageHeader navLinks={navLinks} stageWidth={stageWidth} />
             <Container
                 mt="xl"
@@ -24,6 +24,6 @@ export default function FrontLayout({ children }: PropsWithChildren) {
                 {children}
             </Container>
             <PageFooter socialLinks={socialLinks} />
-        </>
+        </MantineProvider>
     );
 }

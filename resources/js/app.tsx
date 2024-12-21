@@ -5,7 +5,7 @@ import './bootstrap';
 
 
 import { createInertiaApp } from '@inertiajs/react';
-import { createTheme, MantineProvider, MantineThemeOverride } from '@mantine/core';
+import { createTheme, MantineThemeOverride } from '@mantine/core';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';
 
