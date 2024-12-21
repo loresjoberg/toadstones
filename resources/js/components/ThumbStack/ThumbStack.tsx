@@ -18,8 +18,7 @@ export function ThumbStack({ feature, position }: ThumbStackProps) {
             className={classes.featureStack}
         >
             <Anchor component={Link}  href={feature.url}>
-                <Image
-                    src={`${config.mediaBase}/${feature.thumbLocation}`}
+                <Image src={`${config.mediaBase}/${feature.thumbLocation}`}
                     alt={feature.title}
                     bd="1px solid black"
                     miw="200px"
@@ -35,11 +34,11 @@ export function ThumbStack({ feature, position }: ThumbStackProps) {
             >
                 {feature.sectionTitle}
             </Text>
-            <Anchor component={Link}  href={feature.url}>
+            <Anchor component={Link}  href={feature.url}   c="secondary.6">
                 <Title
                     order={3}
                     size="1.5rem"
-                    c="secondary.6"
+
                     ff="PT Sans Narrow"
                     fw="bold"
                 >

@@ -22,7 +22,6 @@ export function NavBar({ navLinks, search, stageWidth }: NavLinksProps) {
                 >
                     {navLinks.map((link) => (
                         <NavBarLink
-                            color="secondary.9"
                             key={link.href}
                             text={link.text}
                             href={link.href}

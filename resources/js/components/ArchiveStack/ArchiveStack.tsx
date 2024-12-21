@@ -10,22 +10,22 @@ interface ArchiveStackProps {
 }
 
 export function ArchiveStack({
-    thumb,
-    title,
-    launch,
-    destination,
-}: ArchiveStackProps) {
+                                 thumb,
+                                 title,
+                                 launch,
+                                 destination
+                             }: ArchiveStackProps) {
     const formatDate = (launch: Date) => {
         return launch.toLocaleDateString('en-us', {
             month: 'short',
             year: 'numeric',
-            day: 'numeric',
+            day: 'numeric'
         });
     };
 
     return (
         <Stack w="200px" gap="0">
-            <Anchor component={Link}  href={destination}>
+            <Anchor component={Link} href={destination}>
                 <Image
                     src={thumb}
                     alt={title}
@@ -41,13 +41,11 @@ export function ArchiveStack({
             >
                 {formatDate(launch)}
             </Text>
-            <Anchor component={Link}  href={destination}>
-                <Title
-                    c="secondary.6"
-                    order={3}
-                    fz="1.5rem"
-                    ff="PT Sans Narrow"
-                    fw="bold"
+            <Anchor component={Link} href={destination} c="secondary.6">
+                <Title order={3}
+                       fz="1.5rem"
+                       ff="PT Sans Narrow"
+                       fw="bold"
                 >
                     {title}
                 </Title>

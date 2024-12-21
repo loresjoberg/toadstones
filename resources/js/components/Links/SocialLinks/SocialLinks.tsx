@@ -7,7 +7,6 @@ export function SocialLinks({ socialLinks }: LinksProps) {
         <Stack gap={0}>
             {socialLinks.map((link) => (
                 <SocialLink
-                    color="secondary.3"
                     key={link.href}
                     text={link.text}
                     href={link.href}

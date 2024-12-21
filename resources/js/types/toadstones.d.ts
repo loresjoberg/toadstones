@@ -42,7 +42,6 @@ export interface PageProps {
 export interface SiteLinkProps {
     text: string;
     href: string;
-    color: string;
 }
 
 export interface SiteLink {

@@ -26,10 +26,9 @@ export function FeaturedStack({ feature }: FeaturedStackProps) {
             >
                 {feature.sectionTitle}
             </Text>
-            <Anchor component={Link}  href={feature.url}>
+            <Anchor  c="secondary.6" component={Link}  href={feature.url}>
                 <Title
                     order={2}
-                    c="secondary.6"
                     size="2rem"
                     ff="PT Sans Narrow"
                 >
