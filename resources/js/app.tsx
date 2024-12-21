@@ -36,7 +36,7 @@ createInertiaApp({
     setup({ el, App, props }) {
         const root = createRoot(el);
 
-        root.render(<MantineProvider><App {...props} /></MantineProvider>);
+        root.render(<MantineProvider theme={theme}><App {...props} /></MantineProvider>);
     },
     progress: {
         color: '#4B5563'
