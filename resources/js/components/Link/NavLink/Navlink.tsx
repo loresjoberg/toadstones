@@ -1,7 +1,7 @@
 import { SiteLinkProps } from '@/types/toadstones';
 import { Link } from '@inertiajs/react';
 import { Box } from '@mantine/core';
-import classes from '*.module.css';
+import classes from './NavLinkClasses.module.css';
 
 export function NavLink({ text, href, color }: SiteLinkProps) {
     return (
