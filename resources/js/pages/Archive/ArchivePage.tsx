@@ -6,17 +6,17 @@ import { formatFeatures } from '@/util/data-access';
 import { Head, usePage } from '@inertiajs/react';
 import { Center, Container, Flex, Loader, Title } from '@mantine/core';
 import _ from 'lodash';
-import { Feature, Section } from '@/types/toadstones';
+import { Feature, RawFeature, Section } from '@/types/toadstones';
 
 
 type ArchivePageTypes = {
     section: Section,
-    features: Feature[]
+    features: RawFeature[]
 }
 
 export default function ArchivePage({ section, features }: ArchivePageTypes) {
     const { sections } = usePage<PagePropsInterface>().props;
-    const formattedFeatures = formatFeatures(features, sections);
+    const formattedFeatures = formatFeatures( _.orderBy(features, ['launch'], ['desc']), sections);
     const archiveTitle = section ? `${section.title} Archive` : 'Archive';
 
     return _.isEmpty(formattedFeatures) ? (

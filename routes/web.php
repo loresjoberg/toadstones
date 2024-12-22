@@ -7,7 +7,6 @@ use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TestController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -16,8 +15,6 @@ Route::get('/p/{slug}', [FeaturePageController::class, 'show']);
 Route::get('/t/{slug}', [ArchiveController::class, 'show']);
 Route::get('/archive',[ArchiveController::class, 'index'] );
 Route::get('/s/{query}',[SearchController::class, 'show'] );
-
-
 
 Route::get('/admin/dashboard', function () {
     return Inertia::render('Dashboard');
