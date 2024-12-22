@@ -31,12 +31,12 @@ export default function HomePage({ features }) {
         );
         setRecentFeatures(
             _.slice(
-                _.orderBy(formattedFeatures, ['id'], ['desc']),
+                _.orderBy(formattedFeatures, ['launch'], ['desc']),
                 1,
                 config.mainThumbsLimit + 1,
             ),
         );
-        setMainFeature(_.orderBy(formattedFeatures, ['id'], ['desc'])[0]);
+        setMainFeature(_.orderBy(formattedFeatures, ['launch'], ['desc'])[0]);
     }, []);
 
     return (
