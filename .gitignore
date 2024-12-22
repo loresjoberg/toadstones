@@ -157,3 +157,5 @@ dist
 /src/data/
 /src/favicon.ico
 /resources/js/config/config.tsx
+/database/seeders/FeatureSeeder.php
+/database/seeders/SectionSeeder.php
