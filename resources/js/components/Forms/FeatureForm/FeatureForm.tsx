@@ -1,4 +1,4 @@
-import { FileUpload } from '@/Components/Forms/FileUpload/FileUpload';
+import { FileUpload } from '@/components/Forms/FileUpload/FileUpload';
 import { FeatureFormValues } from '@/types/toadstones';
 import {
     Button,
