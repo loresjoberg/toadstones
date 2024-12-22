@@ -1,6 +1,7 @@
 import { FeatureForm } from '@/components/Forms/FeatureForm/FeatureForm';
 import { router } from '@inertiajs/react';
 import { Box, Container, Title } from '@mantine/core';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 
 export default function EditFeature({ feature }) {
     const initialValues = {
@@ -14,7 +15,7 @@ export default function EditFeature({ feature }) {
         thumbnailUrl: `/storage/${feature.thumbLocation}`,
         status: feature.status,
         isPopular: !!feature.isPopular,
-        launch: new Date(feature.launch),
+        launch: new Date(feature.launch)
     };
     const submitRoute = (values) => {
         values._method = 'put';
@@ -22,15 +23,16 @@ export default function EditFeature({ feature }) {
         router.post('/api/features', values);
     };
 
-    return (
-        <Container size="sm">
-            <Title>Edit Feature</Title>
-            <Box mt="3rem">
-                <FeatureForm
-                    initialValues={initialValues}
-                    submitRoute={submitRoute}
-                />
-            </Box>
-        </Container>
+    return (<AuthenticatedLayout>
+            <Container size="sm">
+                <Title>Edit Feature</Title>
+                <Box mt="3rem">
+                    <FeatureForm
+                        initialValues={initialValues}
+                        submitRoute={submitRoute}
+                    />
+                </Box>
+            </Container>
+        </AuthenticatedLayout>
     );
 }
