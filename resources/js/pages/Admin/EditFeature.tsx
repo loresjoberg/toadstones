@@ -30,6 +30,7 @@ export default function EditFeature({ feature }) {
                     <FeatureForm
                         initialValues={initialValues}
                         submitRoute={submitRoute}
+                        action="edit"
                     />
                 </Box>
             </Container>

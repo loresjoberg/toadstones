@@ -22,9 +22,10 @@ import { PagePropsInterface } from '@/pages/HomePage';
 interface FeatureFormProps {
     initialValues: FeatureFormValues;
     submitRoute;
+    action: string;
 }
 
-export function FeatureForm({ initialValues, submitRoute }: FeatureFormProps) {
+export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormProps) {
     const [featureMedium, setFeatureMedium] = useState<string>('image');
     const [thumbnailPreview, setThumbnailPreview] = useState(<></>);
     const [imagePreview, setImagePreview] = useState(<></>);
@@ -162,6 +163,7 @@ export function FeatureForm({ initialValues, submitRoute }: FeatureFormProps) {
                     {...form.getInputProps('title')}
                 />
                 <TextInput
+                    disabled={action === 'edit'}
                     label="Slug"
                     placeholder="Slug"
                     radius="xl"
