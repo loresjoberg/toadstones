@@ -1,7 +1,7 @@
 import AuthenticatedLayout from '@/layouts/AuthenticatedLayout';
 import { Feature } from '@/types/toadstones';
 import { Link } from '@inertiajs/react';
-import { Box, Container, Title } from '@mantine/core';
+import { Box, Container, Group, Title } from '@mantine/core';
 import '@mantine/core/styles.layer.css';
 import { sortBy } from 'lodash';
 import { DataTable, DataTableSortStatus } from 'mantine-datatable';
@@ -12,12 +12,12 @@ interface FeatureListProps {
     features: Feature[];
 }
 
-export default function FeatureList({ features }: FeatureListProps) {
+export default function ListFeatures({ features }: FeatureListProps) {
     const [sortStatus, setSortStatus] = useState<
         DataTableSortStatus<Feature[]>
     >({
         columnAccessor: 'title',
-        direction: 'asc',
+        direction: 'asc'
     });
     const [records, setRecords] = useState(sortBy(features, 'title'));
 
@@ -49,19 +49,26 @@ export default function FeatureList({ features }: FeatureListProps) {
                             accessor: 'edit',
                             title: '#',
                             textAlign: 'right',
-                            width: 40,
-                            render: (feature) => {
+                            width: 120,
+                            render: (feature: Feature) => {
                                 return (
-                                    <Link
-                                        href={`/admin/edit-feature/${feature.slug}`}
-                                    >
-                                        Edit
-                                    </Link>
+                                    <Group>
+                                        <Link
+                                            href={`/admin/edit-feature/${feature.slug}`}
+                                        >
+                                            Edit
+                                        </Link>
+                                        <Link
+                                            href={`/admin/delete-feature/${feature.slug}`}
+                                        >
+                                            Delete
+                                        </Link>
+                                    </Group>
                                 );
-                            },
+                            }
                         },
                         { accessor: 'title', sortable: true },
-                        { accessor: 'launch', sortable: true },
+                        { accessor: 'launch', sortable: true }
                     ]}
                     sortStatus={sortStatus}
                     onSortStatusChange={setSortStatus}

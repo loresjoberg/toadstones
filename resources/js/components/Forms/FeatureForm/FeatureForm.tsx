@@ -101,9 +101,6 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
         },
     });
 
-    form.errors;
-
-
     const setUpPreview = (fileObject, type) => {
         const imageUrl = URL.createObjectURL(fileObject);
 
@@ -164,7 +161,7 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
                     {...form.getInputProps('title')}
                 />
                 <TextInput
-                    // disabled={action === 'edit'}
+                    disabled={action === 'edit'}
                     label="Slug"
                     placeholder="Slug"
                     radius="xl"

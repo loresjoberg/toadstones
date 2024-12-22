@@ -27,9 +27,16 @@ class FeatureController extends Controller
 
     public function edit($slug): Response
     {
-        $feature = Feature::firstWhere('slug', $slug);
+        $feature = $this->getFeatureBySlug($slug);
 
         return Inertia::render('Admin/EditFeature', ['feature' => $feature]);
+    }
+
+    public function confirmDelete($slug): Response
+    {
+        $feature = $this->getFeatureBySlug($slug);
+
+        return Inertia::render('Admin/ConfirmDeleteFeature', ['feature' => $feature]);
     }
 
     /**
@@ -38,7 +45,7 @@ class FeatureController extends Controller
     public function list(Request $request): Response
     {
         $features = Feature::all();
-        return Inertia::render('Admin/FeatureList', ['features' => $features]);
+        return Inertia::render('Admin/ListFeatures', ['features' => $features]);
     }
 
     public function store(FeatureStoreRequest $request): RedirectResponse
@@ -66,8 +73,7 @@ class FeatureController extends Controller
 
         Log::debug('new feature', $feature);
 
-        /** @var Model $currentFeature */
-        $currentFeature = Feature::firstWhere('slug', $feature['slug']);
+        $currentFeature = $this->getFeatureBySlug($feature['slug']);
         foreach ($currentFeature->getAttributes() as $index => $attribute) {
             Log::debug('index', [$index]);
             Log::debug('attribute', [$attribute]);
@@ -91,20 +97,11 @@ class FeatureController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        $request->validate([
-            'password' => ['required', 'current_password'],
-        ]);
+        $feature = $this->getFeatureBySlug($request['slug']);
 
-        $user = $request->user();
+        $feature->delete();
 
-        Auth::logout();
-
-        $user->delete();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return Redirect::to('/');
+        return to_route('dashboard');
     }
 
     /**
@@ -136,5 +133,14 @@ class FeatureController extends Controller
         unset($feature['image']);
         unset($feature['thumbnail']);
         return $feature;
+    }
+
+    /**
+     * @param $slug
+     * @return Feature
+     */
+    public function getFeatureBySlug($slug): Feature
+    {
+        return Feature::firstWhere('slug', $slug);
     }
 }

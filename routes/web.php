@@ -26,9 +26,11 @@ Route::get('/admin/dashboard', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin/new-feature', [FeatureController::class, 'add'])->name('new-feature');
     Route::get('/admin/edit-feature/{slug}', [FeatureController::class, 'edit'])->name('edit-feature');
+    Route::get('/admin/delete-feature/{slug}', [FeatureController::class, 'confirmDelete'])->name('feature.confirm-delete');
     Route::get('/admin/list-features', [FeatureController::class, 'list'])->name('list-features');
     Route::post('/api/features', [FeatureController::class, 'store'])->name('new-feature.store');
     Route::put('/api/features', [FeatureController::class, 'update'])->name('edit-feature.update');
+    Route::delete('api/features', [FeatureController::class, 'destroy'])->name('feature.destroy');
     Route::put('/api/test', [TestController::class, 'testPut'])->name('test.put');
     Route::get('/api/test', [TestController::class, 'testGet'])->name('test.get');
     Route::post('/api/test', [TestController::class, 'testPost'])->name('test.post');
