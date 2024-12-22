@@ -1,15 +1,8 @@
-import ApplicationLogo from '@/components/ApplicationLogo';
-import Dropdown from '@/components/Dropdown';
-import NavLink from '@/components/NavLink';
-import ResponsiveNavLink from '@/components/ResponsiveNavLink';
 import { Link, usePage } from '@inertiajs/react';
 import { PropsWithChildren, ReactNode, useState } from 'react';
-import { Anchor, Box, Button, Container, Flex, Image, VisuallyHidden } from '@mantine/core';
+import { Anchor, Box, Container, Flex } from '@mantine/core';
 
-export default function AuthenticatedLayout({
-                                                header,
-                                                children
-                                            }: PropsWithChildren<{ header?: ReactNode }>) {
+export default function AuthenticatedLayout({ header, children }: PropsWithChildren<{ header?: ReactNode }>) {
     const user = usePage().props.auth.user;
 
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
@@ -17,9 +10,9 @@ export default function AuthenticatedLayout({
 
     return (
         <Box mih={'100vh'} bg="grey">
-            <Box bg="white" style={{ borderBottom: '1px solid #555555' }} >
+            <Box bg="white" style={{ borderBottom: '1px solid #555555' }}>
                 <Container>
-                    <Flex  mih="5rem" align="center" justify="space-between" direction="row" bg="white">
+                    <Flex mih="5rem" align="center" justify="space-between" direction="row" bg="white">
                         <Box mt="0.25rem" pb="0.75rem" pt="0.5rem">
                             <Anchor component={Link} href="/admin/dashboard">
                                 Dashboard
@@ -51,7 +44,7 @@ export default function AuthenticatedLayout({
                     </Flex>
                 </Container>
             </Box>
-            <Container pt="5rem" pb="20rem" bg="white">{children}</Container>
+            <Container pt="2rem" pb="20rem" bg="white">{children}</Container>
         </Box>
     );
 }
