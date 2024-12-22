@@ -1,4 +1,4 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import AuthenticatedLayout from '@/layouts/AuthenticatedLayout';
 import { Feature } from '@/types/toadstones';
 import { Link } from '@inertiajs/react';
 import { Box, Container, Title } from '@mantine/core';

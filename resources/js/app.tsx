@@ -1,4 +1,6 @@
 import '@mantine/core/styles.css';
+import '@mantine/dates/styles.css'
+
 import '../css/app.css';
 import '../css/font-face.css';
 import './bootstrap';

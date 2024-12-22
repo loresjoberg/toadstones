@@ -1,5 +1,5 @@
 import { ThumbStack } from '@/components/ThumbStack/ThumbStack';
-import FrontLayout from '@/Layouts/FrontLayout';
+import FrontLayout from '@/layouts/FrontLayout';
 import { Container, Flex, Title, Text } from '@mantine/core';
 import { Head } from '@inertiajs/react';
 

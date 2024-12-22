@@ -11,19 +11,9 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-//Route::get('/', function () {
-//    return Inertia::render('HomePage', [
-//        'canLogin' => Route::has('login'),
-//        'canRegister' => Route::has('register'),
-//        'laravelVersion' => Application::VERSION,
-//        'phpVersion' => PHP_VERSION,
-//    ]);
-//});
-
 Route::get('/', [HomePageController::class, 'show']);
 Route::get('/p/{slug}', [FeaturePageController::class, 'show']);
 Route::get('/t/{slug}', [ArchiveController::class, 'show']);
-
 Route::get('/archive',[ArchiveController::class, 'index'] );
 Route::get('/s/{query}',[SearchController::class, 'show'] );
 

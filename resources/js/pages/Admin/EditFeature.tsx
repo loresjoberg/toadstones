@@ -1,7 +1,7 @@
 import { FeatureForm } from '@/components/Forms/FeatureForm/FeatureForm';
 import { router } from '@inertiajs/react';
 import { Box, Container, Title } from '@mantine/core';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import AuthenticatedLayout from '@/layouts/AuthenticatedLayout';
 
 export default function EditFeature({ feature }) {
     const initialValues = {
@@ -10,6 +10,7 @@ export default function EditFeature({ feature }) {
         section_id: feature.section_id,
         medium: feature.medium,
         html: feature.html,
+        thumbnail: null,
         imageUrl: `/storage/${feature.mediaLocation}`,
         videoUrl: `/storage/${feature.mediaLocation}`,
         thumbnailUrl: `/storage/${feature.thumbLocation}`,
@@ -18,8 +19,8 @@ export default function EditFeature({ feature }) {
         launch: new Date(feature.launch)
     };
     const submitRoute = (values) => {
+        console.log('EditFeature::submitRoute', values);
         values._method = 'put';
-        console.log('values', values);
         router.post('/api/features', values);
     };
 
@@ -28,9 +29,9 @@ export default function EditFeature({ feature }) {
                 <Title>Edit Feature</Title>
                 <Box mt="3rem">
                     <FeatureForm
+                        action="edit"
                         initialValues={initialValues}
                         submitRoute={submitRoute}
-                        action="edit"
                     />
                 </Box>
             </Container>

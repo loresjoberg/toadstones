@@ -1,4 +1,4 @@
-import FrontLayout from '@/Layouts/FrontLayout';
+import FrontLayout from '@/layouts/FrontLayout';
 import HtmlPage from '@/pages/Features/HtmlPage';
 import ImagePage from '@/pages/Features/ImagePage';
 import VideoPage from '@/pages/Features/VideoPage';

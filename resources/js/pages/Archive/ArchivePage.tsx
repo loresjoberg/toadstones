@@ -1,6 +1,6 @@
 import { ArchiveStack } from '@/components/ArchiveStack/ArchiveStack';
 import { config } from '@/config/config';
-import FrontLayout from '@/Layouts/FrontLayout';
+import FrontLayout from '@/layouts/FrontLayout';
 import { PagePropsInterface } from '@/pages/HomePage';
 import { formatFeatures } from '@/util/data-access';
 import { Head, usePage } from '@inertiajs/react';

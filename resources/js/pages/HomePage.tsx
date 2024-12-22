@@ -1,7 +1,7 @@
 import { MainColumn } from '@/components/Main/MainColumn';
 import { Sidebar } from '@/components/Sidebar/Sidebar';
 import { config } from '@/config/config';
-import FrontLayout from '@/Layouts/FrontLayout';
+import FrontLayout from '@/layouts/FrontLayout';
 import { Feature, Section } from '@/types/toadstones';
 import { formatFeatures } from '@/util/data-access';
 import { Head, usePage } from '@inertiajs/react';

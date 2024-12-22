@@ -12,12 +12,11 @@ import {
     TextInput,
 } from '@mantine/core';
 import { DateTimePicker } from '@mantine/dates';
-import '@mantine/dropzone/styles.css';
 import { useForm } from '@mantine/form';
 import { useEffect, useState } from 'react';
 import { FaVideo } from 'react-icons/fa';
 import { usePage } from '@inertiajs/react';
-import { PagePropsInterface } from '@/pages/HomePage';
+import _ from 'lodash';
 
 interface FeatureFormProps {
     initialValues: FeatureFormValues;
@@ -26,14 +25,13 @@ interface FeatureFormProps {
 }
 
 export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormProps) {
-    const [featureMedium, setFeatureMedium] = useState<string>('image');
+    const [featureMedium, setFeatureMedium] = useState<string>('');
     const [thumbnailPreview, setThumbnailPreview] = useState(<></>);
     const [imagePreview, setImagePreview] = useState(<></>);
     const [videoPreview, setVideoPreview] = useState(<></>);
 
     const  {sections}  = usePage().props;
 
-    console.log('sections', sections);
     const sectionOptions = sections.map((section) => {
         return { label: section.title , value: section.id }
     })
@@ -74,7 +72,7 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
         validate: {
             title: (value) => (value ? null : 'Title Required'),
             slug: (value) => (value ? null : 'Slug Required'),
-            thumbnail: (value) => (value ? null : 'Thumbnail Required'),
+            thumbnail: (value) => (_.isUndefined(value) ? 'Thumbnail Required' : null),
             launch: (value) => (value ? null : 'Launch Required'),
         },
         transformValues: (values) => ({
@@ -87,7 +85,6 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
             video: values.video,
             status: values.status,
             isPopular: !!values.isPopular,
-            thumbnail: values.thumbnail,
             launch: formatDate(values.launch),
         }),
         onValuesChange: (values) => {
@@ -103,6 +100,9 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
             }
         },
     });
+
+    form.errors;
+
 
     const setUpPreview = (fileObject, type) => {
         const imageUrl = URL.createObjectURL(fileObject);
@@ -144,6 +144,7 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
     };
 
     const handleForm = (values) => {
+        console.log('handleForm')
         const date = new Date(values.launch);
         const dateString = date.toISOString().split('T')[0];
         const timeString = date.toISOString().split('T')[1].split('.')[0];
@@ -163,7 +164,7 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
                     {...form.getInputProps('title')}
                 />
                 <TextInput
-                    disabled={action === 'edit'}
+                    // disabled={action === 'edit'}
                     label="Slug"
                     placeholder="Slug"
                     radius="xl"
