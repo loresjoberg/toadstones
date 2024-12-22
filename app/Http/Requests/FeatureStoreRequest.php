@@ -27,7 +27,7 @@ class FeatureStoreRequest extends FormRequest
             'medium' => ['required', 'string', 'lowercase', 'max:255'],
             'html' => ['string', 'nullable'],
             'image' => ['file', 'image', 'nullable'],
-            'video' => ['file', 'mimetypes:video/mpeg', 'nullable'],
+            'video' => ['file', 'mimetypes:video/mpeg,video/mp4', 'nullable'],
             'thumbnail' => ['file', 'image'],
             'isPopular' => ['required', 'boolean', 'max:255'],
         ];
