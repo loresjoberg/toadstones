@@ -3,14 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FeatureStoreRequest;
-use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Feature;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -51,12 +47,9 @@ class FeatureController extends Controller
     public function store(FeatureStoreRequest $request): RedirectResponse
     {
 
-        Log::debug('store');
 
         $feature = $request->toArray();
         $feature = $this->storeFiles($request, $feature);
-
-        Log::debug('feature in', [$feature]);
 
         Feature::create($feature);
 
@@ -71,21 +64,12 @@ class FeatureController extends Controller
         $feature = $request->toArray();
         $feature = $this->storeFiles($request, $feature);
 
-        Log::debug('new feature', $feature);
-
         $currentFeature = $this->getFeatureBySlug($feature['slug']);
         foreach ($currentFeature->getAttributes() as $index => $attribute) {
-            Log::debug('index', [$index]);
-            Log::debug('attribute', [$attribute]);
             if (isset($feature[$index])) {
-                Log::debug('new attribute', [$feature[$index]]);
                 $currentFeature->$index = $feature[$index];
-            } else {
-                Log::debug('no new attribute');
-
             }
         }
-        Log::debug('filled', [$currentFeature]);
 
         $currentFeature->save();
 
@@ -111,6 +95,12 @@ class FeatureController extends Controller
      */
     public function storeFiles(Request $request, array $feature): array
     {
+        Log::debug('FeatureController::storeFiles');
+        Log::debug('medium',[$feature['medium']]);
+        Log::debug('request',$request->toArray());
+        Log::debug('thumb',[$request->file('thumbnail')]);
+
+
         if ($feature['medium'] === 'video' && $request->file('video')) {
             $feature['mediaLocation'] = $request->file('video')
                 ->storeAs('video', $request['slug'] . ".mp4", 'public');
@@ -124,8 +114,12 @@ class FeatureController extends Controller
         }
 
         if ($request->file('thumbnail')) {
-            $feature['thumbLocation'] = $request->file('thumbnail')
+            Log::debug('have thumbnail');
+            Log::debug($request['slug']);
+            $result = $feature['thumbLocation'] = $request->file('thumbnail')
                 ->storeAs('thumbnails', $request['slug'] . "-thumb.png", 'public');
+            Log::debug($result);
+
         }
 
 

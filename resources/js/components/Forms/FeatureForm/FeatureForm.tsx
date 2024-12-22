@@ -81,6 +81,7 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
             section_id: values.section_id,
             medium: values.medium,
             html: values.html,
+            thumbnail: values.thumbnail,
             image: values.image,
             video: values.video,
             status: values.status,

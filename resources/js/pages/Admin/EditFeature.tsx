@@ -10,7 +10,6 @@ export default function EditFeature({ feature }) {
         section_id: feature.section_id,
         medium: feature.medium,
         html: feature.html,
-        thumbnail: null,
         imageUrl: `/storage/${feature.mediaLocation}`,
         videoUrl: `/storage/${feature.mediaLocation}`,
         thumbnailUrl: `/storage/${feature.thumbLocation}`,
