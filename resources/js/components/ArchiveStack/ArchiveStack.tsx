@@ -5,7 +5,7 @@ interface ArchiveStackProps {
     thumb?: string;
     altText?: string;
     title?: string;
-    launch: Date;
+    launch: string;
     destination: string;
 }
 
@@ -15,13 +15,13 @@ export function ArchiveStack({
                                  launch,
                                  destination
                              }: ArchiveStackProps) {
-    const formatDate = (launch: Date) => {
-        return launch.toLocaleDateString('en-us', {
-            month: 'short',
-            year: 'numeric',
-            day: 'numeric'
-        });
-    };
+    // const formatDate = (launch: Date) => {
+    //     return launch.toLocaleDateString('en-us', {
+    //         month: 'short',
+    //         year: 'numeric',
+    //         day: 'numeric'
+    //     });
+    // };
 
     return (
         <Stack w="200px" gap="0">
@@ -39,7 +39,7 @@ export function ArchiveStack({
                 c="primary.3"
                 mt="0.25rem"
             >
-                {formatDate(launch)}
+                {launch}
             </Text>
             <Anchor component={Link} href={destination} c="secondary.6">
                 <Title order={3}

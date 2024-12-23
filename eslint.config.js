@@ -1,18 +1,28 @@
 import react from "@eslint-react/eslint-plugin";
-import tseslint from "typescript-eslint";
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
 
-export default tseslint.config({
-    files: ["**/*.ts", "**/*.tsx"],
-    extends: [
-        react.configs["recommended-type-checked"],
-    ],
-    languageOptions: {
-        parser: tseslint.parser,
-        parserOptions: {
-            projectService: true,
+export default tseslint.config(
+    eslint.configs.recommended,
+    tseslint.configs.recommendedTypeChecked,
+    {
+        files: ["**/*.ts", "**/*.tsx"],
+        extends: [
+            react.configs["recommended-type-checked"],
+        ],
+        languageOptions: {
+            parser: tseslint.parser,
+            parserOptions: {
+                projectService: true,
+                tsconfigRootDir: import.meta.dirname,
+            },
         },
+        rules: {
+            // Put rules you want to override here
+        }
     },
-    rules: {
-        // Put rules you want to override here
+    {
+        files: ['**/*.js'],
+        extends: [tseslint.configs.disableTypeChecked],
     },
-});
+);

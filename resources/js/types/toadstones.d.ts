@@ -1,28 +1,13 @@
-export interface RawFeature {
+export interface Feature {
     id: number;
+    section_slug: string;
     section_id: number;
+    section_title: string;
+    thumbLocation: string;
+    mediaLocation?: string;
     title: string;
     launch: string;
     status: string;
-    views: number;
-    slug: string;
-    html?: string;
-    medium?: string;
-    mediaLocation?: string;
-    thumbLocation: string;
-    isPopular: boolean;
-}
-
-export interface Feature {
-    id: number;
-    section: string;
-    section_id: number;
-    sectionTitle: string;
-    thumbLocation: string;
-    mediaLocation?: string;
-    title: string;
-    url: string;
-    launch: Date;
     slug: string;
     html?: string;
     medium?: string;

@@ -1,22 +1,19 @@
 import { ArchiveStack } from '@/components/ArchiveStack/ArchiveStack';
 import { config } from '@/config/config';
 import FrontLayout from '@/layouts/FrontLayout';
-import { PagePropsInterface } from '@/pages/HomePage';
-import { formatFeatures } from '@/util/data-access';
-import { Head, usePage } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
 import { Center, Container, Flex, Loader, Title } from '@mantine/core';
 import _ from 'lodash';
-import { Feature, RawFeature, Section } from '@/types/toadstones';
+import { Feature, Section } from '@/types/toadstones';
 
 
 type ArchivePageTypes = {
     section: Section,
-    features: RawFeature[]
+    features: Feature[]
 }
 
 export default function ArchivePage({ section, features }: ArchivePageTypes) {
-    const { sections } = usePage<PagePropsInterface>().props;
-    const formattedFeatures = formatFeatures( _.orderBy(features, ['launch'], ['desc']), sections);
+    const formattedFeatures =  _.orderBy(features, ['launch'], ['desc']);
     const archiveTitle = section ? `${section.title} Archive` : 'Archive';
 
     return _.isEmpty(formattedFeatures) ? (

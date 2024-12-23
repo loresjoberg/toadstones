@@ -1,4 +1,5 @@
 import { router } from '@inertiajs/react';
+import { RequestPayload } from '@inertiajs/core';
 import {
     Box,
     Button,
@@ -9,29 +10,37 @@ import {
 } from '@mantine/core';
 import AuthenticatedLayout from '@/layouts/AuthenticatedLayout';
 import { useForm } from '@mantine/form';
+import { Feature } from '@/types/toadstones';
 
-export default function ConfirmDeleteFeature({ feature }) {
-    const submitRoute = (values) => {
-        console.log('ConfirmDeleteFeature::submitRoute', values);
-        values._method = 'delete';
+interface ConfirmDeleteFeatureProps  {
+    feature: Feature
+}
+
+interface DeleteValues  {
+    slug: string,
+    _method: string,
+}
+export default function ConfirmDeleteFeature({ feature }:ConfirmDeleteFeatureProps) {
+    const submitRoute = (values: RequestPayload) => {
         router.post('/api/features', values);
     };
 
     const form = useForm({
         mode: 'uncontrolled',
-        initialValues:  {
-           slug: feature.slug
+        initialValues: {
+            slug: feature.slug,
+            _method: 'delete'
         },
         validate: {
-            slug: (value) => (value ? null : 'Slug Required'),
-        },
+            slug: (value) => (value ? null : 'Slug Required')
+        }
     });
 
 
     return (<AuthenticatedLayout>
             <Container size="sm">
                 <Box mt="3rem">
-                    <form onSubmit={form.onSubmit((values) => submitRoute(values))}>
+                    <form onSubmit={form.onSubmit((values) => submitRoute<DeleteValues>(values))}>
                         <Stack>
                             <Title>Delete {feature.title}?</Title>
                             <Group justify="flex-start" mt="md">

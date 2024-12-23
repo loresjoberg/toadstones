@@ -10,7 +10,7 @@ interface FeaturedStackProps {
 export function FeaturedStack({ feature }: FeaturedStackProps) {
     return (
         <Stack gap={0}>
-            <Anchor component={Link}  href={feature.url}>
+            <Anchor component={Link}  href={config.featureUrlPrefix + feature.slug}>
                 <Image
                     style={{ border: '1px solid black' }}
                     src={`${config.mediaBase}/${feature.thumbLocation}`}
@@ -24,9 +24,9 @@ export function FeaturedStack({ feature }: FeaturedStackProps) {
                 c="primary.3"
                 mt="0.25rem"
             >
-                {feature.sectionTitle}
+                {feature.section_title}
             </Text>
-            <Anchor  c="secondary.6" component={Link}  href={feature.url}>
+            <Anchor  c="secondary.6" component={Link}  href={config.featureUrlPrefix + feature.slug}>
                 <Title
                     order={2}
                     size="2rem"

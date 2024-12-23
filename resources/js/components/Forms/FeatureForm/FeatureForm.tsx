@@ -1,5 +1,5 @@
 import { FileUpload } from '@/components/Forms/FileUpload/FileUpload';
-import { FeatureFormValues } from '@/types/toadstones';
+import { FeatureFormValues, Section } from '@/types/toadstones';
 import {
     Button,
     Center,
@@ -9,140 +9,97 @@ import {
     NativeSelect,
     Stack,
     Textarea,
-    TextInput,
+    TextInput
 } from '@mantine/core';
 import { DateTimePicker } from '@mantine/dates';
-import { useForm } from '@mantine/form';
-import { useEffect, useState } from 'react';
+import { useForm, UseFormReturnType } from '@mantine/form';
+import { useState } from 'react';
 import { FaVideo } from 'react-icons/fa';
 import { usePage } from '@inertiajs/react';
 import _ from 'lodash';
 
 interface FeatureFormProps {
     initialValues: FeatureFormValues;
-    submitRoute;
+    submitRoute: (FormValues) => void;
     action: string;
+}
+
+interface PageProps {
+    sections: Section[];
+}
+
+interface FormValues {
+    title: string,
+    slug: string,
+    section_id: number,
+    medium: string,
+    html: string,
+    thumbnail: File,
+    image: File,
+    video: File,
+    status: File,
+    isPopular: boolean,
+    launch: string
 }
 
 export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormProps) {
     const [featureMedium, setFeatureMedium] = useState<string>('');
-    const [thumbnailPreview, setThumbnailPreview] = useState(<></>);
-    const [imagePreview, setImagePreview] = useState(<></>);
-    const [videoPreview, setVideoPreview] = useState(<></>);
 
-    const  {sections}  = usePage().props;
+    const { sections }: PageProps = usePage().props;
 
     const sectionOptions = sections.map((section) => {
-        return { label: section.title , value: section.id }
-    })
+        return { label: section.title, value: section.id };
+    });
 
-    useEffect(() => {
-        if (initialValues.thumbnailUrl) {
-            setThumbnailPreview(
-                <Image
-                    src={initialValues.thumbnailUrl}
-                    maw="200px"
-                    onLoad={() =>
-                        URL.revokeObjectURL(initialValues.thumbnailUrl)
-                    }
-                />,
-            );
-        }
-        if (initialValues.imageUrl) {
-            setImagePreview(
-                <Image
-                    src={initialValues.imageUrl}
-                    maw="200px"
-                    onLoad={() => URL.revokeObjectURL(initialValues.imageUrl)}
-                />,
-            );
-        }
-        if (initialValues.videoUrl) {
-            setVideoPreview(
-                <Center fz="4rem" bd="2px solid black">
-                    <FaVideo />
-                </Center>,
-            );
-        }
-    }, []);
+    const getThumbnailPreview = () => {
+        return <Image
+            src={initialValues.thumbnailUrl}
+            maw="200px"
+            onLoad={() =>
+                URL.revokeObjectURL(initialValues.thumbnailUrl)
+            }
+        />;
+    };
 
-    const form = useForm({
+    const getImagePreview = () => {
+        return <Image
+            src={initialValues.imageUrl}
+            maw="200px"
+            onLoad={() => URL.revokeObjectURL(initialValues.imageUrl)}
+        />;
+    };
+
+    const getVideoPreview = () => {
+        return <Center fz="4rem" bd="2px solid black">
+            <FaVideo />
+        </Center>;
+    };
+
+
+    const form: UseFormReturnType<FeatureFormValues> = useForm<FeatureFormValues>({
         mode: 'uncontrolled',
         initialValues: initialValues,
         validate: {
             title: (value) => (value ? null : 'Title Required'),
             slug: (value) => (value ? null : 'Slug Required'),
             thumbnail: (value) => (_.isUndefined(value) ? 'Thumbnail Required' : null),
-            launch: (value) => (value ? null : 'Launch Required'),
+            launch: (value) => (value ? null : 'Launch Required')
         },
-        transformValues: (values) => ({
-            title: values.title,
-            slug: values.slug,
-            section_id: values.section_id,
-            medium: values.medium,
-            html: values.html,
-            thumbnail: values.thumbnail,
-            image: values.image,
-            video: values.video,
-            status: values.status,
-            isPopular: !!values.isPopular,
-            launch: formatDate(values.launch),
-        }),
         onValuesChange: (values) => {
             setFeatureMedium(values.medium);
-            if (values.thumbnail) {
-                setUpPreview(values.thumbnail, 'thumbnail');
-            }
-            if (values.image) {
-                setUpPreview(values.image, 'image');
-            }
-            if (values.video) {
-                setUpPreview(values.video, 'video');
-            }
-        },
+        }
     });
 
-    const setUpPreview = (fileObject, type) => {
-        const imageUrl = URL.createObjectURL(fileObject);
 
-        if (type === 'thumbnail') {
-            setThumbnailPreview(
-                <Image
-                    src={imageUrl}
-                    maw="200px"
-                    onLoad={() => URL.revokeObjectURL(imageUrl)}
-                />,
-            );
-        }
+    // const formatDate = (launch: Date) => {
+    //     const date = launch;
+    //     const dateString = date.toISOString().split('T')[0];
+    //     const timeString = date.toISOString().split('T')[1].split('.')[0];
+    //     return `${dateString} ${timeString}`;
+    // };
 
-        if (type === 'image') {
-            setImagePreview(
-                <Image
-                    src={imageUrl}
-                    maw="200px"
-                    onLoad={() => URL.revokeObjectURL(imageUrl)}
-                />,
-            );
-        }
-
-        if (type === 'video') {
-            setVideoPreview(
-                <Center fz="4rem" bd="2px solid black">
-                    <FaVideo />
-                </Center>,
-            );
-        }
-    };
-
-    const formatDate = (launch: Date) => {
-        const date = launch;
-        const dateString = date.toISOString().split('T')[0];
-        const timeString = date.toISOString().split('T')[1].split('.')[0];
-        return `${dateString} ${timeString}`;
-    };
-
-    const handleForm = (values) => {
-        console.log('handleForm')
+    const handleForm = (values: FormValues) => {
+        console.log('handleForm');
         const date = new Date(values.launch);
         const dateString = date.toISOString().split('T')[0];
         const timeString = date.toISOString().split('T')[1].split('.')[0];
@@ -186,7 +143,7 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
                         data={[
                             { label: 'image', value: 'image' },
                             { label: 'video', value: 'video' },
-                            { label: 'html', value: 'html' },
+                            { label: 'html', value: 'html' }
                         ]}
                         key={form.key('medium')}
                         {...form.getInputProps('medium')}
@@ -199,7 +156,7 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
                             { label: 'active', value: 'active' },
                             { label: 'inactive', value: 'inactive' },
                             { label: 'draft', value: 'draft' },
-                            { label: 'archived', value: 'archived' },
+                            { label: 'archived', value: 'archived' }
                         ]}
                         key={form.key('status')}
                         {...form.getInputProps('status')}
@@ -209,14 +166,14 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
                     form={form}
                     name="thumbnail"
                     type="Thumbnail"
-                    preview={thumbnailPreview}
+                    preview={getThumbnailPreview()}
                 />
                 {featureMedium === 'image' && (
                     <FileUpload
                         form={form}
                         name="image"
                         type="Image"
-                        preview={imagePreview}
+                        preview={getImagePreview()}
                     />
                 )}
                 {featureMedium === 'video' && (
@@ -224,7 +181,7 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
                         form={form}
                         name="video"
                         type="Video"
-                        preview={videoPreview}
+                        preview={getVideoPreview()}
                     />
                 )}
                 {featureMedium === 'html' && (
@@ -252,7 +209,7 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
                         label="Popular"
                         key={form.key('isPopular')}
                         {...form.getInputProps('isPopular', {
-                            type: 'checkbox',
+                            type: 'checkbox'
                         })}
                     />
                 </Group>

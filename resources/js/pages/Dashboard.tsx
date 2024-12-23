@@ -1,6 +1,6 @@
 import AuthenticatedLayout from '@/layouts/AuthenticatedLayout';
 import { Head, Link } from '@inertiajs/react';
-import { Stack, Title } from '@mantine/core';
+import { Anchor, Stack, Title } from '@mantine/core';
 import { config } from '@/config/config';
 
 export default function Dashboard() {
@@ -20,12 +20,12 @@ export default function Dashboard() {
                         <div className="p-6 text-gray-900">
                             <Title order={1}>{config.siteName} Admin</Title>
                             <Stack mt="2rem">
-                                <Link href="/admin/list-features">
+                                <Anchor component={Link} href="/admin/list-features">
                                     List Features
-                                </Link>
-                                <Link href="/admin/new-feature">
+                                </Anchor>
+                                <Anchor component={Link} href="/admin/new-feature">
                                     Add New Feature
-                                </Link>
+                                </Anchor>
                             </Stack>
                         </div>
                     </div>

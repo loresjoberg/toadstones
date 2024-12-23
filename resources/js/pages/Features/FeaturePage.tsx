@@ -2,16 +2,15 @@ import FrontLayout from '@/layouts/FrontLayout';
 import HtmlPage from '@/pages/Features/HtmlPage';
 import ImagePage from '@/pages/Features/ImagePage';
 import VideoPage from '@/pages/Features/VideoPage';
-import { RawFeature } from '@/types/toadstones';
+import { Feature } from '@/types/toadstones';
 import { Head, usePage } from '@inertiajs/react';
 import { Container } from '@mantine/core';
-import { config } from '@/config/config';
 
 export interface PageProps {
-    feature: RawFeature;
+    feature: Feature;
 }
 
-export default function FeaturePage({ feature }) {
+export default function FeaturePage({ feature }: PageProps) {
     const { sections } = usePage().props;
 
     console.log('sections', sections);
@@ -21,7 +20,7 @@ export default function FeaturePage({ feature }) {
         return  <Head title="Not Found" />;
     }
 
-    if (feature.section === 'the-ratings' || feature.medium === 'html') {
+    if (feature.section_slug === 'the-ratings' || feature.medium === 'html') {
         return (
             <FrontLayout>
                 <Head title={feature.title} />
@@ -32,11 +31,10 @@ export default function FeaturePage({ feature }) {
         );
     }
 
-    if (feature.section === 'bandwidth-theater' || feature.medium === 'video') {
+    if (feature.section_slug === 'bandwidth-theater' || feature.medium === 'video') {
         return (
             <FrontLayout>
                 <Head title={feature.title} />
-
                 <Container size="md">
                     <VideoPage feature={feature} />
                 </Container>

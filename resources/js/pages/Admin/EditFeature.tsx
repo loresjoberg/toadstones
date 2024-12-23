@@ -1,12 +1,18 @@
 import { FeatureForm } from '@/components/Forms/FeatureForm/FeatureForm';
 import { router } from '@inertiajs/react';
+import { RequestPayload } from '@inertiajs/core';
 import { Box, Container, Title } from '@mantine/core';
 import AuthenticatedLayout from '@/layouts/AuthenticatedLayout';
+import { Feature } from '@/types/toadstones';
 
-export default function EditFeature({ feature }) {
+interface EditFeatureProps {
+    feature: Feature
+}
+export default function EditFeature({ feature }: EditFeatureProps) {
     const initialValues = {
         title: feature.title,
         slug: feature.slug,
+        _method: 'put',
         section_id: feature.section_id,
         medium: feature.medium,
         html: feature.html,
@@ -17,9 +23,8 @@ export default function EditFeature({ feature }) {
         isPopular: !!feature.isPopular,
         launch: new Date(feature.launch)
     };
-    const submitRoute = (values) => {
+    const submitRoute = (values: RequestPayload) => {
         console.log('EditFeature::submitRoute', values);
-        values._method = 'put';
         router.post('/api/features', values);
     };
 

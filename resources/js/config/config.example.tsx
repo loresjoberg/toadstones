@@ -47,7 +47,8 @@ export const config = {
     logoUrl: 'https://api.badgods.com/storage/ui/bad-gods-logo.png',
     adImgUrl: 'https://api.badgods.com/storage/ui/store-ad.png',
     adDestinationUrl: 'https://dogsandsorcerers.creator-spring.com/',
-    siteName: "Bad Gods"
+    siteName: "Bad Gods",
+    featureUrlPrefix: '/p/',
     // apiSections: "http://localhost:8000/api/sections",
     // apiFeatures: "http://localhost:8000/api/features"
 };

@@ -1,6 +1,6 @@
 import { SiteLinkProps } from '@/types/toadstones';
 import { Link } from '@inertiajs/react';
-import { Anchor, MantineColor, StyleProp, Text } from '@mantine/core';
+import { Anchor, Text } from '@mantine/core';
 
 export function SocialLink({ text, href }: SiteLinkProps) {
     return (

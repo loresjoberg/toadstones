@@ -2,7 +2,7 @@ import { PageFooter } from '@/components/PageFooter/PageFooter';
 import { PageHeader } from '@/components/PageHeader/PageHeader';
 import { config } from '@/config/config';
 import { SiteLink } from '@/types/toadstones';
-import { Container, MantineProvider } from '@mantine/core';
+import { Container } from '@mantine/core';
 import { PropsWithChildren } from 'react';
 
 const navLinks: SiteLink[] = config.navigationLinks;

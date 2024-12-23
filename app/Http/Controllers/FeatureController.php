@@ -12,9 +12,14 @@ use Inertia\Response;
 
 class FeatureController extends Controller
 {
-    /**
-     * Display the user's profile form.
-     */
+
+    public function returnOne(): Response
+    {
+        $feature = Feature::first();
+        return Inertia::render('Admin/OneFeature', ['feature' => $feature]);
+
+    }
+
     public function add(): Response
     {
         return Inertia::render('Admin/NewFeature');
@@ -96,9 +101,9 @@ class FeatureController extends Controller
     public function storeFiles(Request $request, array $feature): array
     {
         Log::debug('FeatureController::storeFiles');
-        Log::debug('medium',[$feature['medium']]);
-        Log::debug('request',$request->toArray());
-        Log::debug('thumb',[$request->file('thumbnail')]);
+        Log::debug('medium', [$feature['medium']]);
+        Log::debug('request', $request->toArray());
+        Log::debug('thumb', [$request->file('thumbnail')]);
 
 
         if ($feature['medium'] === 'video' && $request->file('video')) {

@@ -1,12 +1,9 @@
 import { Link, usePage } from '@inertiajs/react';
-import { PropsWithChildren, ReactNode, useState } from 'react';
+import { PropsWithChildren, ReactNode } from 'react';
 import { Anchor, Box, Container, Flex } from '@mantine/core';
 
-export default function AuthenticatedLayout({ header, children }: PropsWithChildren<{ header?: ReactNode }>) {
+export default function AuthenticatedLayout({ children }: PropsWithChildren<{ header?: ReactNode }>) {
     const user = usePage().props.auth.user;
-
-    const [showingNavigationDropdown, setShowingNavigationDropdown] =
-        useState(false);
 
     return (
         <Box mih={'100vh'} bg="grey">

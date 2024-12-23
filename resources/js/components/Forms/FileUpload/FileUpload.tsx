@@ -1,10 +1,11 @@
 import { Box, Button, Center, FileButton, Group } from '@mantine/core';
+import { ReactNode } from 'react';
 
 interface FileUploadProps {
     form;
     name: string;
     type: string;
-    preview;
+    preview: ReactNode;
 }
 
 export function FileUpload({ form, name, type, preview }: FileUploadProps) {

@@ -11,7 +11,7 @@ import { Anchor, createTheme, MantineProvider, MantineThemeOverride } from '@man
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+const appName = import.meta.env.VITE_APP_NAME as string || 'Laravel';
 
 const theme = createTheme({
     fontFamily: 'PT Sans, sans-serif',
@@ -30,7 +30,7 @@ const theme = createTheme({
 } as MantineThemeOverride);
 
 
-createInertiaApp({
+void createInertiaApp({
     title: (title) => {
         if (title === appName) {
             return title;
