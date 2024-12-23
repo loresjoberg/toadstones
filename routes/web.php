@@ -28,7 +28,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/api/features', [FeatureController::class, 'store'])->name('new-feature.store');
     Route::put('/api/features', [FeatureController::class, 'update'])->name('edit-feature.update');
     Route::delete('api/features', [FeatureController::class, 'destroy'])->name('feature.destroy');
-    Route::get('api/one-feature', [FeatureController::class, 'returnOne'])->name('feature.destroy');
     Route::put('/api/test', [TestController::class, 'testPut'])->name('test.put');
     Route::get('/api/test', [TestController::class, 'testGet'])->name('test.get');
     Route::post('/api/test', [TestController::class, 'testPost'])->name('test.post');
