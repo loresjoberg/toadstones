@@ -31,7 +31,7 @@ export const MobileBanner = ({ navLinks }: MobileBannerProps) => {
             <Menu.Dropdown>
                 {navLinks.map((link) => (
                     <Menu.Item key={link.href}>
-                        <Anchor component={Link} href={link.href} c="secondary.9">
+                        <Anchor component={Link} href={link.href} fw="bold" c="secondary.9">
                             {link.text}
                         </Anchor>
                     </Menu.Item>
