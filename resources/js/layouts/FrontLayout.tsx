@@ -14,7 +14,6 @@ export default function FrontLayout({ children }: PropsWithChildren) {
     return (<>
             <PageHeader navLinks={navLinks} stageWidth={stageWidth} />
             <Container
-                mt="xl"
                 mb="xl"
                 fluid
                 style={{ maxWidth: stageWidth, minHeight: '80vh' }}

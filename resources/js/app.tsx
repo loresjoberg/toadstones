@@ -14,6 +14,13 @@ import { createRoot } from 'react-dom/client';
 const appName = import.meta.env.VITE_APP_NAME as string || 'Laravel';
 
 const theme = createTheme({
+    breakpoints: {
+        xs: '30em',
+        sm: '37.5em',
+        md: '56.25em',
+        lg: '75em',
+        xl: '90em',
+    },
     fontFamily: 'PT Sans, sans-serif',
     colors: {
         'primary': ['#DCE7E9', '#B9CFD3', '#96B6BC', '#739EA6', '#5E8095', '#4A6185', '#354374', '#43577F', '#3C4D7A', '#354374'],
