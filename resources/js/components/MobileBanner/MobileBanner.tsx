@@ -18,7 +18,7 @@ export const MobileBanner = ({ navLinks }: MobileBannerProps) => {
     return (<Flex justify="space-between" align="center">
         <Anchor component={Link} href="/">
             <Image
-                mah="100%"
+                mah="80px"
                 className={classes.logo}
                 src={config.logoUrl}
                 alt={config.siteName}
