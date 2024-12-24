@@ -16,9 +16,9 @@ export const MobileBanner = ({ navLinks }: MobileBannerProps) => {
     const [opened, { toggle }] = useDisclosure();
 
     return (<Flex justify="space-between" align="center">
-        <Anchor component={Link} href="/">
+        <Anchor component={Link} href="/" h="80px">
             <Image
-                mah="80px"
+                h="80px"
                 className={classes.logo}
                 src={config.logoUrl}
                 alt={config.siteName}
