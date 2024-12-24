@@ -11,7 +11,7 @@ interface PageHeaderProps {
 
 export function PageHeader({ navLinks, stageWidth }: PageHeaderProps) {
     return (<Container mt="1em">
-        <Box hiddenFrom="sm" mb="1em" pb="1em" style={{borderBottom: "4px solid #00ff00"}}>
+        <Box hiddenFrom="sm" mb="1em" pb="1em" style={{borderBottom: "4px solid #0000ff"}}>
             <MobileBanner navLinks={navLinks}/>
         </Box>
         <Box visibleFrom="sm">
