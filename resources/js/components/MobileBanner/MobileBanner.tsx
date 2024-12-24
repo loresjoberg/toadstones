@@ -27,7 +27,7 @@ export const MobileBanner = ({ navLinks }: MobileBannerProps) => {
             <Menu.Target>
                 <Burger lineSize={2} opened={opened} onClick={toggle} aria-label="Toggle navigation" />
             </Menu.Target>
-            <Menu.Dropdown>
+            <Menu.Dropdown bg="primary.3" bd="0">
                 {navLinks.map((link) => (
                     <Menu.Item key={link.href}>
                         <Anchor component={Link} href={link.href} fw="bold" c="secondary.9">
