@@ -17,21 +17,17 @@ interface HomePageInterface {
 }
 export default function HomePage({ features }: HomePageInterface) {
     const getPopularFeatures = (features: Feature[]) => {
-        const formattedFeatures = features;
-
         return _.slice(
-            _.orderBy(formattedFeatures, ['isPopular'], ['desc']),
+            _.orderBy(features, ['isPopular'], ['desc']),
             0,
             config.popularFeaturesLimit,
         )
     }
 
     const getRecentFeatures = (features: Feature[]) => {
-        const formattedFeatures = features;
-
         return _.slice(
             _.slice(
-                _.orderBy(formattedFeatures, ['launch'], ['desc']),
+                _.orderBy(features, ['launch'], ['desc']),
                 1,
                 config.mainThumbsLimit + 1,
             ),
@@ -39,9 +35,7 @@ export default function HomePage({ features }: HomePageInterface) {
     }
 
     const getMainFeature = (features: Feature[]) => {
-        const formattedFeatures = features;
-
-       return _.orderBy(formattedFeatures, ['launch'], ['desc'])[0];
+        return _.orderBy(features, ['launch'], ['desc'])[0];
     }
 
 
