@@ -49,13 +49,13 @@ export interface FeatureFormValues {
     section_id: number;
     medium: string;
     html: string;
-    imageFile?: File;
-    videoFile?: File;
-    thumbnailFile?: File;
+    image?: File;
+    video?: File;
+    thumbnail?: File;
     imageUrl: string;
     videoUrl: string;
     thumbnailUrl: string;
     status: string;
     isPopular: boolean;
-    launch: Date;
+    launch: string;
 }

@@ -1,10 +1,12 @@
 import { Link } from '@inertiajs/react';
 import { Anchor, Image, Stack, Text, Title } from '@mantine/core';
+import dayjs from 'dayjs';
 
 interface ArchiveStackProps {
     thumb?: string;
     altText?: string;
     title?: string;
+    section?: string;
     launch: string;
     destination: string;
 }
@@ -12,16 +14,15 @@ interface ArchiveStackProps {
 export function ArchiveStack({
                                  thumb,
                                  title,
+                                 section,
                                  launch,
                                  destination
                              }: ArchiveStackProps) {
-    // const formatDate = (launch: Date) => {
-    //     return launch.toLocaleDateString('en-us', {
-    //         month: 'short',
-    //         year: 'numeric',
-    //         day: 'numeric'
-    //     });
-    // };
+
+
+    const formatDate = (launch: string) => {
+        return dayjs(launch).format('D MMMM YYYY')
+    };
 
     return (
         <Stack w="200px" gap="0">
@@ -39,7 +40,7 @@ export function ArchiveStack({
                 c="primary.3"
                 mt="0.25rem"
             >
-                {launch}
+                {section}
             </Text>
             <Anchor component={Link} href={destination} c="secondary.6">
                 <Title order={3}
@@ -50,6 +51,15 @@ export function ArchiveStack({
                     {title}
                 </Title>
             </Anchor>
+            <Text
+                size="sm"
+                fw={700}
+                ff="PT Sans Narrow"
+                c="primary.3"
+                mt="0"
+            >
+                {formatDate(launch)}
+            </Text>
         </Stack>
     );
 }

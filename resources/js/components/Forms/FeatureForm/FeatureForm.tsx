@@ -16,7 +16,8 @@ import { useForm, UseFormReturnType } from '@mantine/form';
 import { useState } from 'react';
 import { FaVideo } from 'react-icons/fa';
 import { usePage } from '@inertiajs/react';
-import _ from 'lodash';
+
+// import _ from 'lodash';
 
 interface FeatureFormProps {
     initialValues: FeatureFormValues;
@@ -28,22 +29,15 @@ interface PageProps {
     sections: Section[];
 }
 
-interface FormValues {
-    title: string,
-    slug: string,
-    section_id: number,
-    medium: string,
-    html: string,
-    thumbnail: File,
-    image: File,
-    video: File,
-    status: File,
-    isPopular: boolean,
-    launch: string
+export interface FormInputProps {
+    onChange: (payload: (File | null)) => void;
+    value: File;
 }
 
 export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormProps) {
     const [featureMedium, setFeatureMedium] = useState<string>('');
+    const [thumbSrc, setThumbSrc] = useState<string>('');
+    const [imageSrc, setImageSrc] = useState<string>('');
 
     const { sections }: PageProps = usePage().props;
 
@@ -51,28 +45,45 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
         return { label: section.title, value: section.id };
     });
 
-    const getThumbnailPreview = () => {
+    const getPreview = (type: string) => {
+
+        let src = '';
+
+        if (type === 'video') {
+            return <Center fz="4rem" bd="2px solid black">
+                <FaVideo />
+            </Center>;
+        }
+
+        if (type === 'thumbnail') {
+            src = thumbSrc ? thumbSrc : initialValues.thumbnailUrl
+
+        }
+
+        if (type === 'image') {
+            src = imageSrc ? imageSrc : initialValues.imageUrl
+        }
+
+
         return <Image
-            src={initialValues.thumbnailUrl}
+            src={src}
             maw="200px"
             onLoad={() =>
-                URL.revokeObjectURL(initialValues.thumbnailUrl)
+                URL.revokeObjectURL(src)
             }
         />;
     };
 
-    const getImagePreview = () => {
-        return <Image
-            src={initialValues.imageUrl}
-            maw="200px"
-            onLoad={() => URL.revokeObjectURL(initialValues.imageUrl)}
-        />;
+
+
+    const onFileChange = (form: UseFormReturnType<FeatureFormValues>, type: string) => {
+        const props: FormInputProps = form.getInputProps(type) as FormInputProps;
+        return props.onChange;
     };
 
-    const getVideoPreview = () => {
-        return <Center fz="4rem" bd="2px solid black">
-            <FaVideo />
-        </Center>;
+    const fileValue = (form: UseFormReturnType<FeatureFormValues>, type: string) => {
+        const props = form.getInputProps(type) as FormInputProps;
+        return props.value;
     };
 
 
@@ -82,33 +93,26 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
         validate: {
             title: (value) => (value ? null : 'Title Required'),
             slug: (value) => (value ? null : 'Slug Required'),
-            thumbnail: (value) => (_.isUndefined(value) ? 'Thumbnail Required' : null),
+            // thumbnail: (value) => (_.isUndefined(value) ? 'Thumbnail Required' : null),
             launch: (value) => (value ? null : 'Launch Required')
         },
         onValuesChange: (values) => {
+            setThumbSrc(URL.createObjectURL(values.thumbnail));
+            setImageSrc(URL.createObjectURL(values.image));
             setFeatureMedium(values.medium);
         }
     });
 
-
-    // const formatDate = (launch: Date) => {
-    //     const date = launch;
-    //     const dateString = date.toISOString().split('T')[0];
-    //     const timeString = date.toISOString().split('T')[1].split('.')[0];
-    //     return `${dateString} ${timeString}`;
-    // };
-
-    const handleForm = (values: FormValues) => {
-        console.log('handleForm');
-        const date = new Date(values.launch);
+    const handleForm = (form: FeatureFormValues) => {
+        const date = new Date(form.launch);
         const dateString = date.toISOString().split('T')[0];
         const timeString = date.toISOString().split('T')[1].split('.')[0];
-        values.launch = `${dateString} ${timeString}`;
-        submitRoute(values);
+        form.launch = `${dateString} ${timeString}`;
+        submitRoute(form);
     };
 
     return (
-        <form onSubmit={form.onSubmit((values) => handleForm(values))}>
+        <form onSubmit={form.onSubmit((values: FeatureFormValues) => handleForm(values))}>
             <Stack>
                 <TextInput
                     label="Title"
@@ -163,26 +167,29 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
                     />
                 </Group>
                 <FileUpload
-                    form={form}
-                    name="thumbnail"
-                    type="Thumbnail"
-                    preview={getThumbnailPreview()}
-                />
-                {featureMedium === 'image' && (
+                    type='thumbnail'
+                    label="Upload Thumbnail"
+                    fileKey={form.key('thumbnail')}
+                    file={fileValue(form, 'thumbnail')}
+                    handleChange={onFileChange(form, 'thumbnail')}
+                    preview={getPreview('thumbnail')} />
+                {(featureMedium === 'image' || initialValues.medium) && (
                     <FileUpload
-                        form={form}
-                        name="image"
-                        type="Image"
-                        preview={getImagePreview()}
-                    />
+                        type='image'
+                        label="Upload Image"
+                        fileKey={form.key('image')}
+                        file={fileValue(form, 'image')}
+                        handleChange={onFileChange(form, 'image')}
+                        preview={getPreview('image')} />
                 )}
                 {featureMedium === 'video' && (
                     <FileUpload
-                        form={form}
-                        name="video"
-                        type="Video"
-                        preview={getVideoPreview()}
-                    />
+                        type='video'
+                        label="Upload Video"
+                        fileKey={form.key('video')}
+                        file={fileValue(form, 'video')}
+                        handleChange={onFileChange(form, 'video')}
+                        preview={getPreview('video')} />
                 )}
                 {featureMedium === 'html' && (
                     <Textarea
