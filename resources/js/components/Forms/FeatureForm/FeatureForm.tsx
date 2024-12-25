@@ -99,8 +99,9 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
             launch: (value) => (value ? null : 'Launch Required')
         },
         onValuesChange: (values) => {
+            console.log('onValuesChange',values);
             if (values.title && !form.isTouched('slug')) {
-                console.log('Slug',values, form.isTouched('slug'))
+                console.log('Slug',values.slug, form.isTouched('slug'))
                 values.slug = changeCase.kebabCase(values.title);
             }
 
