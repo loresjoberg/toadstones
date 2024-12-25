@@ -11,6 +11,11 @@ export default function AuthenticatedLayout({ children }: PropsWithChildren<{ he
                 <Container>
                     <Flex mih="5rem" align="center" justify="space-between" direction="row" bg="white">
                         <Box mt="0.25rem" pb="0.75rem" pt="0.5rem">
+                            <Anchor component={Link} href="/">
+                                Home
+                            </Anchor>
+                        </Box>
+                        <Box mt="0.25rem" pb="0.75rem" pt="0.5rem">
                             <Anchor component={Link} href="/admin/dashboard">
                                 Dashboard
                             </Anchor>

@@ -17,8 +17,6 @@ import { useState } from 'react';
 import { FaVideo } from 'react-icons/fa';
 import { usePage } from '@inertiajs/react';
 
-// import _ from 'lodash';
-
 interface FeatureFormProps {
     initialValues: FeatureFormValues;
     submitRoute: (FormValues) => void;
@@ -35,7 +33,7 @@ export interface FormInputProps {
 }
 
 export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormProps) {
-    const [featureMedium, setFeatureMedium] = useState<string>('');
+    const [featureMedium, setFeatureMedium] = useState<string>(initialValues.medium);
     const [thumbSrc, setThumbSrc] = useState<string>('');
     const [imageSrc, setImageSrc] = useState<string>('');
 
@@ -47,12 +45,14 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
 
     const getPreview = (type: string) => {
 
+
         let src = '';
 
-        if (type === 'video') {
+        if (type === 'video' && initialValues.videoUrl) {
             return <Center fz="4rem" bd="2px solid black">
                 <FaVideo />
             </Center>;
+
         }
 
         if (type === 'thumbnail') {
@@ -64,9 +64,7 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
             src = imageSrc ? imageSrc : initialValues.imageUrl
         }
 
-
         return <Image
-
             fit="contain"
             src={src}
             maw="200px"
@@ -99,9 +97,17 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
             launch: (value) => (value ? null : 'Launch Required')
         },
         onValuesChange: (values) => {
-            setThumbSrc(URL.createObjectURL(values.thumbnail));
-            setImageSrc(URL.createObjectURL(values.image));
-            setFeatureMedium(values.medium);
+            if (values.thumbnail) {
+                setThumbSrc(URL.createObjectURL(values.thumbnail));
+            }
+
+            if (values.image) {
+                setImageSrc(URL.createObjectURL(values.image));
+            }
+
+            if (values.medium) {
+                setFeatureMedium(values.medium);
+            }
         }
     });
 
@@ -175,7 +181,7 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
                     file={fileValue(form, 'thumbnail')}
                     handleChange={onFileChange(form, 'thumbnail')}
                     preview={getPreview('thumbnail')} />
-                {(featureMedium === 'image' || initialValues.medium) && (
+                {(featureMedium === 'image') && (
                     <FileUpload
                         type='image'
                         label="Upload Image"
