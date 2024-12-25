@@ -8,12 +8,12 @@ export default function ImagePage({ feature }: PageProps) {
     const formattedFeature = feature;
 
     return (
-            <Image
-
-                fit="contain"
-                maw="800px" ml="auto" mr="auto"
-                src={`${config.mediaBase}/${formattedFeature.mediaLocation}`}
-                alt={formattedFeature.title}
-            />
+        <Image
+            fit="contain"
+            ml="auto"
+            mr="auto"
+            src={`${config.mediaBase}/${formattedFeature.mediaLocation}`}
+            alt={formattedFeature.title}
+        />
     );
 }

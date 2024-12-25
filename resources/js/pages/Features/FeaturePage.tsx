@@ -5,48 +5,41 @@ import VideoPage from '@/pages/Features/VideoPage';
 import { Feature } from '@/types/toadstones';
 import { Head, usePage } from '@inertiajs/react';
 import { Container } from '@mantine/core';
+import { RelatedFeatures } from '@/components/RelatedFeatures/RelatedFeatures';
 
 export interface PageProps {
     feature: Feature;
 }
 
-export default function FeaturePage({ feature }: PageProps) {
-    const { sections } = usePage().props;
+export interface FeaturePageProps {
+    feature: Feature;
+    features: Feature[];
+}
 
-    console.log('sections', sections);
-    console.log('feature', feature);
-
+export default function FeaturePage({ feature, features }: FeaturePageProps) {
     if (!feature) {
-        return  <Head title="Not Found" />;
+        return <Head title="Not Found" />;
     }
 
-    if (feature.section_slug === 'the-ratings' || feature.medium === 'html') {
-        return (
-            <FrontLayout>
-                <Head title={feature.title} />
-                <Container size="md">
-                    <HtmlPage feature={feature} />
-                </Container>
-            </FrontLayout>
-        );
-    }
+    const getFeature = () => {
+        if (feature.medium === 'html') {
+            return <HtmlPage feature={feature} />;
+        }
 
-    if (feature.section_slug === 'bandwidth-theater' || feature.medium === 'video') {
-        return (
-            <FrontLayout>
-                <Head title={feature.title} />
-                <Container size="md">
-                    <VideoPage feature={feature} />
-                </Container>
-            </FrontLayout>
-        );
-    }
+        if (feature.medium === 'video') {
+            return <VideoPage feature={feature} />;
+        }
+
+        return <ImagePage feature={feature} />;
+
+    };
 
     return (
         <FrontLayout>
             <Head title={feature.title} />
             <Container size="md">
-                <ImagePage feature={feature} />
+                {getFeature()}
+                <RelatedFeatures features={features} section={feature.section_slug}/>
             </Container>
         </FrontLayout>
     );

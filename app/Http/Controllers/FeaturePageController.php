@@ -14,7 +14,7 @@ class FeaturePageController extends Controller
     {
         $feature = Feature::where('slug', $slug)->get();
         Log::debug($feature[0], ['feature']);
-        return Inertia::render('Features/FeaturePage', ['feature' => $feature[0]]);
+        return Inertia::render('Features/FeaturePage', ['feature' => $feature[0], 'features' => Feature::all()]);
     }
 
 }
