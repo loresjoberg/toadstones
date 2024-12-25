@@ -39,9 +39,7 @@ export default function FeaturePage({ feature, features }: FeaturePageProps) {
     return (
         <FrontLayout>
             <Head>
-                <title>{feature.title + '--'}</title>
-                <meta property="og:image" content={config.mediaBase + '/' + feature.thumbLocation} />
-                <meta name="twitter:image" content={config.mediaBase + '/' + feature.thumbLocation} />
+                <title>{feature.title}</title>
             </Head>
             <Container size="md">
                 {getFeature()}
