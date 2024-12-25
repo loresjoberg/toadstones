@@ -38,14 +38,15 @@ export default function FeaturePage({ feature, features }: FeaturePageProps) {
 
     return (
         <FrontLayout>
-            <Head title={feature.title}>
-            <meta property="og:image" content={config.mediaBase + '/' + feature.thumbLocation} />
-            <meta name="twitter:image" content={config.mediaBase + '/' + feature.thumbLocation} />
+            <Head>
+                <title>{feature.title + '--'}</title>
+                <meta property="og:image" content={config.mediaBase + '/' + feature.thumbLocation} />
+                <meta name="twitter:image" content={config.mediaBase + '/' + feature.thumbLocation} />
             </Head>
             <Container size="md">
                 {getFeature()}
                 <Space h="lg" />
-                <TextRule label="More Like This" />
+                <TextRule label="More Like This!" />
                 <Space h="md" />
                 <RelatedFeatures features={features} mainFeature={feature} />
             </Container>
