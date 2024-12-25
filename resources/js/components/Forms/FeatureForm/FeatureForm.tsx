@@ -129,6 +129,7 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
 
     return (
         <form onSubmit={form.onSubmit((values: FeatureFormValues) => handleForm(values))}>
+            Foo
             <Stack>
                 <TextInput
                     label="Title"
