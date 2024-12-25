@@ -7,7 +7,6 @@ import { Head } from '@inertiajs/react';
 import { Container, Space } from '@mantine/core';
 import { RelatedFeatures } from '@/components/RelatedFeatures/RelatedFeatures';
 import { TextRule } from '@/components/TextRule/TextRule';
-import { config } from '@/config/config';
 
 export interface PageProps {
     feature: Feature;
