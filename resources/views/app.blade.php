@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:image" content={{'https://' . Request::httpHost() . '/storage/thumbnails/' . explode('/', Request::path())[1] . '.png'}}>
-    <meta property="twitter:image" content={{'https://' . Request::httpHost() . '/storage/thumbnails/' . explode('/', Request::path())[1] . '.png'}}>
+    <meta property="og:image" content={{'https://' . Request::httpHost() . '/storage/thumbnails/' . explode('/', Request::path())[1] . '-thumb.png'}}>
+    <meta property="twitter:image" content={{'https://' . Request::httpHost() . '/storage/thumbnails/' . Request::path() . '-thumb.png'}}>
     <title inertia>{{ config('app.name', 'Laravel') }}</title>
     @routes
     @viteReactRefresh
