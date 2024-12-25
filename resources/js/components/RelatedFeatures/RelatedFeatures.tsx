@@ -5,23 +5,25 @@ import _ from 'lodash';
 
 interface RelatedFeaturesProps {
     features: Feature[];
-    section: string;
+    mainFeature: Feature;
 }
 
-export function RelatedFeatures({ features, section }: RelatedFeaturesProps) {
+export function RelatedFeatures({ features, mainFeature }: RelatedFeaturesProps) {
 
 
     const getRelatedFeatures = (): Feature[] => {
-        const forSection = _.filter(features, ['section_slug', section])
+        const forSection = _.filter(features, function(feature) {
+            return (feature.section_slug === mainFeature.section_slug && feature.slug !== mainFeature.slug);
+        });
         return _.sampleSize(forSection, 3);
-    }
+    };
 
 
     return (<Flex mt="2rem" justify="space-between" direction="row">
-            {
-                getRelatedFeatures().map((feature) => {
-                    return <ThumbStack key={feature.slug} feature={feature} position={-1} />;
-                })
-            }
-        </Flex>);
+        {
+            getRelatedFeatures().map((feature) => {
+                return <ThumbStack key={feature.slug} feature={feature} position={-1} />;
+            })
+        }
+    </Flex>);
 }

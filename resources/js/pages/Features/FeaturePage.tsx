@@ -39,7 +39,7 @@ export default function FeaturePage({ feature, features }: FeaturePageProps) {
             <Head title={feature.title} />
             <Container size="md">
                 {getFeature()}
-                <RelatedFeatures features={features} section={feature.section_slug}/>
+                <RelatedFeatures features={features} mainFeature={feature}/>
             </Container>
         </FrontLayout>
     );
