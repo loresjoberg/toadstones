@@ -7,6 +7,7 @@ import { Head } from '@inertiajs/react';
 import { Container, Space } from '@mantine/core';
 import { RelatedFeatures } from '@/components/RelatedFeatures/RelatedFeatures';
 import { TextRule } from '@/components/TextRule/TextRule';
+import { config } from '@/config/config';
 
 export interface PageProps {
     feature: Feature;
@@ -37,13 +38,16 @@ export default function FeaturePage({ feature, features }: FeaturePageProps) {
 
     return (
         <FrontLayout>
-            <Head title={feature.title} />
+            <Head title={feature.title}>
+            <meta property="og:image" content={config.siteBase + config.featureUrlPrefix + feature.thumbLocation} />
+            <meta name="twitter:image" content={config.siteBase + feature.thumbLocation} />
+            </Head>
             <Container size="md">
                 {getFeature()}
                 <Space h="lg" />
-                <TextRule label="More Like This"/>
+                <TextRule label="More Like This" />
                 <Space h="md" />
-                <RelatedFeatures features={features} mainFeature={feature}/>
+                <RelatedFeatures features={features} mainFeature={feature} />
             </Container>
         </FrontLayout>
     );
