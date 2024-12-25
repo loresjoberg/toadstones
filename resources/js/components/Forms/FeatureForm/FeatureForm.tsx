@@ -38,7 +38,6 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
     const [featureMedium, setFeatureMedium] = useState<string>(initialValues.medium);
     const [thumbSrc, setThumbSrc] = useState<string>('');
     const [imageSrc, setImageSrc] = useState<string>('');
-    const [hasCustomSlug, setHasCustomSlug] = useState<boolean>(false);
 
     const { sections }: PageProps = usePage().props;
 
@@ -129,7 +128,6 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
 
     return (
         <form onSubmit={form.onSubmit((values: FeatureFormValues) => handleForm(values))}>
-            Foo
             <Stack>
                 <TextInput
                     label="Title"
@@ -145,7 +143,6 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
                     placeholder="Slug"
                     radius="xl"
                     withAsterisk
-                    onFocus={() => setHasCustomSlug(true)}
                     key={form.key('slug')}
                     {...form.getInputProps('slug')}
                 />
