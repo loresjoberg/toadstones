@@ -43,10 +43,15 @@ export default function HomePage({ features }: HomePageInterface) {
     return (
         features && (
             <FrontLayout>
-                <Head title={config.siteName}/>
+                <Head>
+                    <title>{config.siteName}</title>
+                    <meta property="og:image" content={config.featureUrlPrefix + getMainFeature(features).thumbLocation} />
+                    <meta name="twitter:image" content={config.featureUrlPrefix + getMainFeature(features).thumbLocation} />
+                </Head>
+
                 <Flex className={classes.stage}
-                    gap="1.5rem"
-                    align="flex-start"
+                      gap="1.5rem"
+                      align="flex-start"
                     justify="space-between"
                 >
                     <MainColumn
