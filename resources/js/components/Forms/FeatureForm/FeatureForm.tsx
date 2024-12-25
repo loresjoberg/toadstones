@@ -16,6 +16,8 @@ import { useForm, UseFormReturnType } from '@mantine/form';
 import { useState } from 'react';
 import { FaVideo } from 'react-icons/fa';
 import { usePage } from '@inertiajs/react';
+import * as changeCase from "change-case";
+
 
 interface FeatureFormProps {
     initialValues: FeatureFormValues;
@@ -36,6 +38,7 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
     const [featureMedium, setFeatureMedium] = useState<string>(initialValues.medium);
     const [thumbSrc, setThumbSrc] = useState<string>('');
     const [imageSrc, setImageSrc] = useState<string>('');
+    const [hasCustomSlug, setHasCustomSlug] = useState<boolean>(false);
 
     const { sections }: PageProps = usePage().props;
 
@@ -88,15 +91,19 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
 
 
     const form: UseFormReturnType<FeatureFormValues> = useForm<FeatureFormValues>({
-        mode: 'uncontrolled',
+        mode: 'controlled',
         initialValues: initialValues,
         validate: {
             title: (value) => (value ? null : 'Title Required'),
             slug: (value) => (value ? null : 'Slug Required'),
-            // thumbnail: (value) => (_.isUndefined(value) ? 'Thumbnail Required' : null),
             launch: (value) => (value ? null : 'Launch Required')
         },
         onValuesChange: (values) => {
+            if (values.title && !form.isTouched('slug')) {
+                console.log('Slug',values, form.isTouched('slug'))
+                values.slug = changeCase.kebabCase(values.title);
+            }
+
             if (values.thumbnail) {
                 setThumbSrc(URL.createObjectURL(values.thumbnail));
             }
@@ -136,6 +143,7 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
                     placeholder="Slug"
                     radius="xl"
                     withAsterisk
+                    onFocus={() => setHasCustomSlug(true)}
                     key={form.key('slug')}
                     {...form.getInputProps('slug')}
                 />

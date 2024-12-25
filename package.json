@@ -41,6 +41,7 @@
         "@tabler/icons-react": "^3.26.0",
         "@types/lodash": "^4.17.13",
         "@types/prop-types": "^15.7.14",
+        "change-case": "^5.4.4",
         "clsx": "^2.1.1",
         "dayjs": "^1.11.13",
         "lodash": "^4.17.21",
