@@ -6,6 +6,8 @@ export  function StoreLink() {
     return (
         <Anchor component={Link}  href={config.adDestinationUrl}>
             <Image
+
+                fit="contain"
                 mb="xs"
                 src={config.adImgUrl}
                 alt="Visit the Bad Gods Store"

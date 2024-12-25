@@ -13,6 +13,8 @@ export const HeaderBanner = ({ stageWidth }: HeaderBannerProps) => {
             <Center>
                 <Anchor component={Link}  href="/">
                     <Image
+
+                        fit="contain"
                         className={classes.logo}
                         src={config.logoUrl}
                         alt={config.siteName}

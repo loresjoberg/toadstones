@@ -1,25 +1,19 @@
 .stage {
     flex-direction: column;
 
-    @media (min-width: 700px) {
+    @media (min-width: 600px) {
         flex-direction: row;
     }
 }
 
 .mainColumn {
     flex-shrink: 1;
-
-    @media (min-width: 700px) {
-        max-width: 75%;
-    }
+    flex-basis: 75%;
 }
 
 .sidebar {
+    flex-basis: 25%;
     flex-shrink: 3;
-
-    @media (min-width: 700px) {
-        max-width: 200px;
-    }
 }
 
 
@@ -33,7 +27,7 @@
 
     width: 46.5%;
 
-    @media (min-width: 900px) {
+    @media (min-width: 600px) {
         width: 31%
 
     }
@@ -44,22 +38,17 @@
 
     width: 46.5%;
 
-    @media (min-width: 700px) {
+    @media (min-width: 600px) {
         width: 100%
 
     }
 
 }
 
-.featureImage {
-    min-width: 200px;
-}
-
 .featureImage_0 {
     border-radius: 3rem;
 
-
-    @media (min-width: 700px) {
+    @media (min-width: 600px) {
         border-radius: 3rem 0;
     }
 }
@@ -71,7 +60,7 @@
 .featureImage_2 {
     border-radius: 3rem 0;
 
-    @media (min-width: 900px) {
+    @media (min-width: 600px) {
         border-radius: 3rem 3rem 0 0;
     }
 }
@@ -79,7 +68,7 @@
 .featureImage_3 {
     border-radius: 0 3rem;
 
-    @media (min-width: 900px) {
+    @media (min-width: 600px) {
         border-radius: 3rem 0;
     }
 }
@@ -87,7 +76,7 @@
 .featureImage_4 {
     border-radius: 3rem 0;
 
-    @media (min-width: 900px) {
+    @media (min-width: 600px) {
         border-radius: 3rem 0;
     }
 }
@@ -95,7 +84,7 @@
 .featureImage_5 {
     border-radius: 0 3rem;
 
-    @media (min-width: 900px) {
+    @media (min-width: 600px) {
         border-radius: 0 0 3rem 3rem
     }
 }
@@ -103,7 +92,7 @@
 .featureImage_6 {
     border-radius: 3rem 0;
 
-    @media (min-width: 900px) {
+    @media (min-width: 600px) {
         border-radius: 0 3rem;
     }
 }

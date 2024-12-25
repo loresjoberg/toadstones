@@ -9,7 +9,7 @@ const navLinks: SiteLink[] = config.navigationLinks;
 const socialLinks: SiteLink[] = config.socialLinks;
 
 export default function FrontLayout({ children }: PropsWithChildren) {
-    const stageWidth = '1120px';
+    const stageWidth = '900px';
 
     return (<>
             <PageHeader navLinks={navLinks} stageWidth={stageWidth} />

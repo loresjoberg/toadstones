@@ -17,24 +17,23 @@ export function ThumbStack({ feature, position }: ThumbStackProps) {
             mb="1rem"
             className={classes.featureStack}
         >
-            <Anchor component={Link}  href={config.featureUrlPrefix + feature.slug}>
-                <Image src={`${config.mediaBase}/${feature.thumbLocation}`}
-                    alt={feature.title}
-                    bd="1px solid black"
-                    miw="200px"
-                    className={`${classes[`featureImage_${position + 1}`]} ${classes.featureImage}`}
+            <Anchor component={Link} href={config.featureUrlPrefix + feature.slug}>
+                <Image fit="contain"
+                       src={`${config.mediaBase}/${feature.thumbLocation}`}
+                       alt={feature.title}
+                       bd="1px solid black"
+                       className={`${classes[`featureImage_${position + 1}`]} ${classes.featureImage}`}
                 />
             </Anchor>
-            <Text
-                size="1rem"
-                fw={700}
-                ff="PT Sans Narrow"
-                mt="0.5rem"
-                c="primary.3"
+            <Text size="1rem"
+                  fw={700}
+                  ff="PT Sans Narrow"
+                  mt="0.5rem"
+                  c="primary.3"
             >
                 {feature.section_title}
             </Text>
-            <Anchor component={Link}  href={config.featureUrlPrefix + feature.slug}   c="secondary.6">
+            <Anchor component={Link} href={config.featureUrlPrefix + feature.slug} c="secondary.6">
                 <Title
                     order={3}
                     size="1.5rem"

@@ -66,6 +66,8 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
 
 
         return <Image
+
+            fit="contain"
             src={src}
             maw="200px"
             onLoad={() =>

@@ -25,9 +25,11 @@ export function ArchiveStack({
     };
 
     return (
-        <Stack w="200px" gap="0">
+        <Stack gap="0">
             <Anchor component={Link} href={destination}>
                 <Image
+
+                    fit="contain"
                     src={thumb}
                     alt={title}
                     style={{ borderRadius: '0 3rem 0 3rem' }}

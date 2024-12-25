@@ -44,8 +44,7 @@ export default function HomePage({ features }: HomePageInterface) {
         features && (
             <FrontLayout>
                 <Head title={config.siteName}/>
-                <Flex
-                    className={classes.stage}
+                <Flex className={classes.stage}
                     gap="1.5rem"
                     align="flex-start"
                     justify="space-between"

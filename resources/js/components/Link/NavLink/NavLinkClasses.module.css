@@ -1,8 +1,8 @@
 .navLink {
     font-size: 12pt;
 
-    @media (min-width: 700px) {
-        font-size: 14pt;
+    @media (min-width: 600px) {
+        font-size: 12pt;
     }
 
     @media (min-width: 900px) {

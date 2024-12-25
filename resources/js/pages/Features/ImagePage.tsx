@@ -9,6 +9,8 @@ export default function ImagePage({ feature }: PageProps) {
 
     return (
             <Image
+
+                fit="contain"
                 maw="800px" ml="auto" mr="auto"
                 src={`${config.mediaBase}/${formattedFeature.mediaLocation}`}
                 alt={formattedFeature.title}

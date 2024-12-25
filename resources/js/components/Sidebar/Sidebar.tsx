@@ -16,12 +16,11 @@ interface SidebarProps {
 export function Sidebar({ popularFeatures }: SidebarProps) {
     return (
         <Stack className={classes.sidebar} gap="sm">
-            <Title
-                order={3}
-                c="white"
-                ta="center"
-                mb="sm"
-                bg="secondary.3"
+            <Title order={3}
+                   c="white"
+                   ta="center"
+                   mb="sm"
+                   bg="secondary.3"
             >
                 Popular
             </Title>

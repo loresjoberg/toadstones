@@ -12,6 +12,7 @@ export function FeaturedStack({ feature }: FeaturedStackProps) {
         <Stack gap={0}>
             <Anchor component={Link}  href={config.featureUrlPrefix + feature.slug}>
                 <Image
+                    fit="contain"
                     style={{ border: '1px solid black' }}
                     src={`${config.mediaBase}/${feature.thumbLocation}`}
                     alt={feature.title}
