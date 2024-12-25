@@ -46,9 +46,9 @@ export default function HomePage({ features }: HomePageInterface) {
                 <Head>
                     <title>{config.siteName}</title>
                     <meta property="og:image"
-                          content={config.mediaBase + getMainFeature(features).thumbLocation} />
+                          content={`${config.mediaBase}/${getMainFeature(features).thumbLocation}`} />
                     <meta name="twitter:image"
-                          content={config.mediaBase + getMainFeature(features).thumbLocation} />
+                          content={`${config.mediaBase}/${getMainFeature(features).thumbLocation}`} />
                 </Head>
 
                 <Flex className={classes.stage}
