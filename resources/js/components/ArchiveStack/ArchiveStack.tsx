@@ -11,8 +11,7 @@ interface ArchiveStackProps {
     destination: string;
 }
 
-export function ArchiveStack({
-                                 thumb,
+export function ArchiveStack({ thumb,
                                  title,
                                  section,
                                  launch,
@@ -28,7 +27,6 @@ export function ArchiveStack({
         <Stack gap="0">
             <Anchor component={Link} href={destination}>
                 <Image
-
                     fit="contain"
                     src={thumb}
                     alt={title}

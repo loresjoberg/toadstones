@@ -3,9 +3,10 @@ import HtmlPage from '@/pages/Features/HtmlPage';
 import ImagePage from '@/pages/Features/ImagePage';
 import VideoPage from '@/pages/Features/VideoPage';
 import { Feature } from '@/types/toadstones';
-import { Head, usePage } from '@inertiajs/react';
-import { Container } from '@mantine/core';
+import { Head } from '@inertiajs/react';
+import { Container, Space } from '@mantine/core';
 import { RelatedFeatures } from '@/components/RelatedFeatures/RelatedFeatures';
+import { TextRule } from '@/components/TextRule/TextRule';
 
 export interface PageProps {
     feature: Feature;
@@ -39,6 +40,9 @@ export default function FeaturePage({ feature, features }: FeaturePageProps) {
             <Head title={feature.title} />
             <Container size="md">
                 {getFeature()}
+                <Space h="lg" />
+                <TextRule label="More Like This"/>
+                <Space h="md" />
                 <RelatedFeatures features={features} mainFeature={feature}/>
             </Container>
         </FrontLayout>

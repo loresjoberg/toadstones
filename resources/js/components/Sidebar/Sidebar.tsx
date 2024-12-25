@@ -2,6 +2,7 @@ import { ThumbStack } from '@/components/ThumbStack/ThumbStack';
 import classes from '@/pages/Home.module.css';
 import { Feature } from '@/types/toadstones';
 import { Flex, Stack, Title } from '@mantine/core';
+import { TextRule } from '@/components/TextRule/TextRule';
 
 interface SidebarProps {
     popularFeatures: Feature[];
@@ -16,14 +17,7 @@ interface SidebarProps {
 export function Sidebar({ popularFeatures }: SidebarProps) {
     return (
         <Stack className={classes.sidebar} gap="sm">
-            <Title order={3}
-                   c="white"
-                   ta="center"
-                   mb="sm"
-                   bg="secondary.3"
-            >
-                Popular
-            </Title>
+            <TextRule label="Popular"/>
             <Flex
                 className={classes.popularFeatures}
                 justify="space-between"

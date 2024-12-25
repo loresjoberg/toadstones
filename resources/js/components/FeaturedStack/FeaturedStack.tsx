@@ -19,7 +19,7 @@ export function FeaturedStack({ feature }: FeaturedStackProps) {
                 />
             </Anchor>
             <Text
-                size="md"
+                fz="1.25rem"
                 ff="PT Sans Narrow"
                 fw={700}
                 c="primary.3"
@@ -30,8 +30,9 @@ export function FeaturedStack({ feature }: FeaturedStackProps) {
             <Anchor  c="secondary.6" component={Link}  href={config.featureUrlPrefix + feature.slug}>
                 <Title
                     order={2}
-                    size="2rem"
+                    fz="2rem"
                     ff="PT Sans Narrow"
+                    lh="1.75rem"
                 >
                     {feature.title}
                 </Title>
