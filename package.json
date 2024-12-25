@@ -2,8 +2,8 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "wild": "vite build",
-        "build": "tsc && vite build",
+        "wild": "vite build && vite build --ssr",
+        "build": "tsc && vite build && vite build --ssr",
         "dev": "vite",
         "lint": "eslint resources/js --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore --fix"
     },
