@@ -11,8 +11,7 @@ interface ArchiveStackProps {
     destination: string;
 }
 
-export function ArchiveStack({
-                                 thumb,
+export function ArchiveStack({ thumb,
                                  title,
                                  section,
                                  launch,
