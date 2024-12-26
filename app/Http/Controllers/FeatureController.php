@@ -56,7 +56,9 @@ class FeatureController extends Controller
     public function update(Request $request): RedirectResponse
     {
         $feature = $request->toArray();
-        $feature['launch'] =  date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $feature['launch'])));
+        if (!empty($feature['launch'])) {
+            $feature['launch'] =  date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $feature['launch'])));
+        }
 
         $feature = $this->storeFiles($request, $feature);
 
