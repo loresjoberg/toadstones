@@ -10,10 +10,6 @@ interface MobileBannerProps {
     navLinks: SiteLink[];
 }
 
-
-
-
-
 export const MobileBanner = ({ navLinks }: MobileBannerProps) => {
     const [opened, { toggle }] = useDisclosure();
 
