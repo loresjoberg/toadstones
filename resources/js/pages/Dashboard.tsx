@@ -4,6 +4,7 @@ import { Anchor, Stack, Title } from '@mantine/core';
 import { config } from '@/config/config';
 
 export default function Dashboard() {
+    console.log('Dashboard');
     return (
         <AuthenticatedLayout
             header={

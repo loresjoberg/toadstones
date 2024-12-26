@@ -12,20 +12,22 @@ export default function EditFeature({ feature }: EditFeatureProps) {
     const initialValues = {
         title: feature.title,
         slug: feature.slug,
-        _method: 'put',
         section_id: feature.section_id,
         medium: feature.medium,
         html: feature.html,
+        image: null,
+        video: null,
+        thumbnail: null,
         imageUrl: `/storage/${feature.mediaLocation}`,
         videoUrl: `/storage/${feature.mediaLocation}`,
         thumbnailUrl: `/storage/${feature.thumbLocation}`,
         status: feature.status,
         isPopular: !!feature.isPopular,
-        launch: new Date(feature.launch)
+        launch: new Date(feature.launch),
+        _method: 'PUT'
     };
     const submitRoute = (values: RequestPayload) => {
-        console.log('EditFeature::submitRoute', values);
-        router.post('/api/features', values);
+        router.put('/api/features', values);
     };
 
     return (<AuthenticatedLayout>

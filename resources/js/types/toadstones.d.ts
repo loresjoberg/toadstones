@@ -57,5 +57,5 @@ export interface FeatureFormValues {
     thumbnailUrl: string;
     status: string;
     isPopular: boolean;
-    launch: string;
+    launch: Date;
 }

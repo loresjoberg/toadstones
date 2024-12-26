@@ -2,6 +2,7 @@ import { FeatureForm } from '@/components/Forms/FeatureForm/FeatureForm';
 import { router } from '@inertiajs/react';
 import { Box, Container, Title } from '@mantine/core';
 import AuthenticatedLayout from '@/layouts/AuthenticatedLayout';
+import { RequestPayload } from '@inertiajs/core';
 
 
 export default function NewFeature() {
@@ -16,11 +17,11 @@ export default function NewFeature() {
         thumbnailUrl: '',
         status: 'active',
         isPopular: false,
-        launch: new Date()
+        launch: new Date(),
+        _method: 'POST',
     };
 
-    const submitRoute = (values) => {
-        console.log('NewFeature::submitRoute')
+    const submitRoute = (values: RequestPayload) => {
         router.post('/api/features', values);
     };
 

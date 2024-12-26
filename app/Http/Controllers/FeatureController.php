@@ -13,13 +13,6 @@ use Inertia\Response;
 class FeatureController extends Controller
 {
 
-    public function returnOne(): Response
-    {
-        $feature = Feature::first();
-        return Inertia::render('Admin/OneFeature', ['feature' => $feature]);
-
-    }
-
     public function add(): Response
     {
         return Inertia::render('Admin/NewFeature');
@@ -51,8 +44,6 @@ class FeatureController extends Controller
 
     public function store(FeatureStoreRequest $request): RedirectResponse
     {
-
-
         $feature = $request->toArray();
         $feature = $this->storeFiles($request, $feature);
 
@@ -64,9 +55,9 @@ class FeatureController extends Controller
 
     public function update(Request $request): RedirectResponse
     {
-        Log::debug('FeatureController::update');
-
         $feature = $request->toArray();
+        $feature['launch'] =  date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $feature['launch'])));
+
         $feature = $this->storeFiles($request, $feature);
 
         $currentFeature = $this->getFeatureBySlug($feature['slug']);

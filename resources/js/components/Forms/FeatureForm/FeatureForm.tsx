@@ -5,7 +5,7 @@ import {
     Center,
     Checkbox,
     Group,
-    Image,
+    Image, Input,
     NativeSelect,
     Stack,
     Textarea,
@@ -90,7 +90,7 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
 
 
     const form: UseFormReturnType<FeatureFormValues> = useForm<FeatureFormValues>({
-        mode: 'controlled',
+        mode: 'uncontrolled',
         initialValues: initialValues,
         validate: {
             title: (value) => (value ? null : 'Title Required'),
@@ -119,10 +119,6 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
     });
 
     const handleForm = (form: FeatureFormValues) => {
-        const date = new Date(form.launch);
-        const dateString = date.toISOString().split('T')[0];
-        const timeString = date.toISOString().split('T')[1].split('.')[0];
-        form.launch = `${dateString} ${timeString}`;
         submitRoute(form);
     };
 
@@ -217,7 +213,6 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
                 <Group>
                     <DateTimePicker
                         valueFormat="DD MMM YYYY hh:mm:ss"
-                        defaultValue={new Date()}
                         label="Launch Date"
                         radius="xl"
                         w="25%"
@@ -225,7 +220,6 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
                         key={form.key('launch')}
                         {...form.getInputProps('launch')}
                     />
-
                     <Checkbox
                         mt="md"
                         label="Popular"
