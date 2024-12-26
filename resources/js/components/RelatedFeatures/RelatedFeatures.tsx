@@ -2,6 +2,7 @@ import { Feature } from '@/types/toadstones';
 import { Flex } from '@mantine/core';
 import { ThumbStack } from '@/components/ThumbStack/ThumbStack';
 import _ from 'lodash';
+import classes from "./RelatedFeatures.module.css"
 
 interface RelatedFeaturesProps {
     features: Feature[];
@@ -23,8 +24,7 @@ export function RelatedFeatures({ features, mainFeature }: RelatedFeaturesProps)
         wrap="wrap"
         gap="1rem"
         mt="2rem"
-        justify="flex-start"
-        direction="row">
+        className={classes.relatedFeatures}>
         {
             getRelatedFeatures().map((feature) => {
                 return <ThumbStack key={feature.slug} feature={feature} position={-1} />;
