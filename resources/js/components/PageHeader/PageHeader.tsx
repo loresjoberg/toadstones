@@ -16,7 +16,7 @@ export function PageHeader({ navLinks, stageWidth }: PageHeaderProps) {
         </Container>
         <Box visibleFrom="sm">
             <HeaderBanner stageWidth={stageWidth} />
-            <NavBar stageWidth={stageWidth} navLinks={navLinks} search />
+            <NavBar stageWidth={stageWidth} navLinks={navLinks} />
         </Box>
     </>);
 }

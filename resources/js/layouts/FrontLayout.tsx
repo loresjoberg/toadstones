@@ -20,7 +20,7 @@ export default function FrontLayout({ children }: PropsWithChildren) {
             >
                 {children}
             </Container>
-            <PageFooter socialLinks={socialLinks} />
+            <PageFooter socialLinks={socialLinks} stageWidth={stageWidth}/>
         </>
     );
 }

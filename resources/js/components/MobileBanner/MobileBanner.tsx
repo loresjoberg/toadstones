@@ -1,12 +1,9 @@
 import { config } from '@/config/config';
 import { Link } from '@inertiajs/react';
 import { Anchor, Burger, Flex, Image, Menu, TextInput } from '@mantine/core';
-import classes from './MobileBanner.module.css';
 import { useDisclosure } from '@mantine/hooks';
-import { NavBarLink } from '@/components/Link/NavLink/NavBarLink';
 import { SiteLink } from '@/types/toadstones';
 import { SearchForm } from '@/components/SearchForm/SearchForm';
-import { FaSearch } from 'react-icons/fa';
 
 interface MobileBannerProps {
     navLinks: SiteLink[];
@@ -37,7 +34,9 @@ export const MobileBanner = ({ navLinks }: MobileBannerProps) => {
                         </Anchor>
                     </Menu.Item>
                 ))}
-                <Menu.Item key={'search'} leftSection={<FaSearch />} rightSection={<TextInput/>}/>
+                <Menu.Item key={'search'}>
+                    <SearchForm/>
+                </Menu.Item>
             </Menu.Dropdown>
         </Menu>
     </Flex>);

@@ -5,11 +5,10 @@ import { Box, Container, Group } from '@mantine/core';
 
 interface NavLinksProps {
     navLinks: SiteLink[];
-    search?: boolean;
     stageWidth?: string | undefined;
 }
 
-export function NavBar({ navLinks, search, stageWidth }: NavLinksProps) {
+export function NavBar({ navLinks, stageWidth }: NavLinksProps) {
     return (
         <Box bg="primary.3">
             <Container size="100%" style={{ maxWidth: stageWidth }}>
@@ -19,6 +18,7 @@ export function NavBar({ navLinks, search, stageWidth }: NavLinksProps) {
                     bg="primary.3"
                     mt="xs"
                     mb="md"
+                    pos="relative"
                 >
                     {navLinks.map((link) => (
                         <NavBarLink
@@ -27,7 +27,7 @@ export function NavBar({ navLinks, search, stageWidth }: NavLinksProps) {
                             href={link.href}
                         />
                     ))}
-                    {search && <SearchForm />}
+                    <SearchForm />
                 </Group>
             </Container>
         </Box>
