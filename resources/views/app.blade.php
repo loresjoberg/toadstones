@@ -3,6 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://www.googletagmanager.com/gtag/js?id=G-1D48GW1JPG" async></script>
+    <script>window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-1D48GW1JPG');
+    </script>
     <!-- TODO: Make this work better -->
     @if (str_contains(Request::path(), 'p/'))
         <meta property="og:image"
