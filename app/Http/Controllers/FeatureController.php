@@ -44,10 +44,10 @@ class FeatureController extends Controller
 
     public function store(FeatureStoreRequest $request): RedirectResponse
     {
-        $feature = $request->toArray();
-        $feature = $this->storeFiles($request, $feature);
+        $this->storeFiles($request);
 
-        Feature::create($feature);
+        Log::debug('store::$request->all()', [$request->all()]);
+        Feature::create($request->all());
 
         return to_route('dashboard');
     }
@@ -55,7 +55,8 @@ class FeatureController extends Controller
 
     public function update(Request $request, $slug): RedirectResponse
     {
-        Log::debug('slug', [$slug]);
+        Log::debug('update::$request->get(\'medium\')', [$request->get('medium')]);
+        Log::debug('update::$slug', [$slug]);
 
         $feature = $request->toArray();
         Log::debug('feature', [$feature]);
@@ -63,9 +64,9 @@ class FeatureController extends Controller
             $feature['launch'] =  date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $feature['launch'])));
         }
 
-        $feature = $this->storeFiles($request, $feature);
+        $feature = $this->storeFiles($request);
 
-        $currentFeature = $this->getFeatureBySlug($feature['slug']);
+        $currentFeature = $this->getFeatureBySlug($slug);
         foreach ($currentFeature->getAttributes() as $index => $attribute) {
             if (isset($feature[$index])) {
                 $currentFeature->$index = $feature[$index];
@@ -94,8 +95,10 @@ class FeatureController extends Controller
      * @param array $feature
      * @return array
      */
-    public function storeFiles(Request $request, array $feature): array
+    public function storeFiles(Request $request): array
     {
+        Log::debug('storeFiles::$request->file("image"))',[$request->file("image")]);
+        $feature = $request->toArray();
 
         if (isset($feature['medium']) && $feature['medium'] === 'video' && $request->file('video')) {
             $feature['mediaLocation'] = $request->file('video')

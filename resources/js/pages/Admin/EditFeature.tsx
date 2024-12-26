@@ -3,7 +3,7 @@ import { router } from '@inertiajs/react';
 import { RequestPayload } from '@inertiajs/core';
 import { Box, Container, Title } from '@mantine/core';
 import AuthenticatedLayout from '@/layouts/AuthenticatedLayout';
-import { Feature } from '@/types/toadstones';
+import { Feature, FeatureFormValues } from '@/types/toadstones';
 
 interface EditFeatureProps {
     feature: Feature
@@ -26,9 +26,9 @@ export default function EditFeature({ feature }: EditFeatureProps) {
         launch: new Date(feature.launch),
         _method: 'PUT'
     };
-    const submitRoute = (values: RequestPayload) => {
-        console.log('submitRoute.values.slug', values.slug)
-        router.put('/api/features/' + values.slug, values);
+    const submitRoute = (values: FeatureFormValues) => {
+        console.log('submitRoute.values', values)
+        router.post('/api/features/' + values.slug, values as RequestPayload);
     };
 
     return (<AuthenticatedLayout>

@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 
 class Feature extends Model
 {
@@ -36,6 +37,12 @@ class Feature extends Model
     public function getSectionSlugAttribute()
     {
         return $this->section->slug;
+    }
+
+    public function setLaunchAttribute( $value): void
+    {
+        $this->attributes['launch'] = (new Carbon($value))->format('Y-m-d H:i:s');
+
     }
 
 }

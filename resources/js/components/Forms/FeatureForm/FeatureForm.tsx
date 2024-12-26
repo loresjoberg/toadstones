@@ -89,7 +89,7 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
 
 
     const form: UseFormReturnType<FeatureFormValues> = useForm<FeatureFormValues>({
-        mode: 'uncontrolled',
+        mode: 'controlled',
         initialValues: initialValues,
         validate: {
             title: (value) => (value ? null : 'Title Required'),
@@ -98,7 +98,7 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
         },
         onValuesChange: (values) => {
             console.log('onValuesChange',values);
-            if (values.title && !form.isTouched('slug')) {
+            if (values.title && !form.isTouched('slug') && action !== 'edit') {
                 console.log('Slug',values.slug, form.isTouched('slug'))
                 values.slug = changeCase.kebabCase(values.title);
             }
@@ -118,6 +118,7 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
     });
 
     const handleForm = (form: FeatureFormValues) => {
+        console.log('FeatureForm.handleForm.form', form)
         submitRoute(form);
     };
 
