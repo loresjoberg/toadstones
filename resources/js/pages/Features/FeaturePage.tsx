@@ -40,13 +40,11 @@ export default function FeaturePage({ feature, features }: FeaturePageProps) {
             <Head>
                 <title>{feature.title}</title>
             </Head>
-            <Container size="md">
-                {getFeature()}
-                <Space h="lg" />
-                <TextRule label="More Like This" />
-                <Space h="md" />
-                <RelatedFeatures features={features} mainFeature={feature} />
-            </Container>
+            {getFeature()}
+            <Space h="lg" />
+            <TextRule label="More Like This" />
+            <Space h="md" />
+            <RelatedFeatures features={features} mainFeature={feature} />
         </FrontLayout>
     );
 }
