@@ -37,6 +37,7 @@ export default function ArchivePage({ section, features }: ArchivePageTypes) {
                 >
                     {formattedFeatures.map((feature) => (
                             <ArchiveStack
+                                key={feature.slug}
                                 section={feature.section_title}
                                 launch={feature.launch}
                                 thumb={`${config.mediaBase}/${feature.thumbLocation}`}
