@@ -27,7 +27,8 @@ export default function EditFeature({ feature }: EditFeatureProps) {
         _method: 'PUT'
     };
     const submitRoute = (values: RequestPayload) => {
-        router.put('/api/features', values);
+        console.log('submitRoute.values.slug', values.slug)
+        router.put('/api/features/' + values.slug, values);
     };
 
     return (<AuthenticatedLayout>

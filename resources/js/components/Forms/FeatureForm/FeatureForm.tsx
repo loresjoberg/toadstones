@@ -47,7 +47,6 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
 
     const getPreview = (type: string) => {
 
-
         let src = '';
 
         if (type === 'video' && initialValues.videoUrl) {

@@ -53,9 +53,12 @@ class FeatureController extends Controller
     }
 
 
-    public function update(Request $request): RedirectResponse
+    public function update(Request $request, $slug): RedirectResponse
     {
+        Log::debug('slug', [$slug]);
+
         $feature = $request->toArray();
+        Log::debug('feature', [$feature]);
         if (!empty($feature['launch'])) {
             $feature['launch'] =  date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $feature['launch'])));
         }
@@ -93,18 +96,13 @@ class FeatureController extends Controller
      */
     public function storeFiles(Request $request, array $feature): array
     {
-        Log::debug('FeatureController::storeFiles');
-        Log::debug('medium', [$feature['medium']]);
-        Log::debug('request', $request->toArray());
-        Log::debug('thumb', [$request->file('thumbnail')]);
 
-
-        if ($feature['medium'] === 'video' && $request->file('video')) {
+        if (isset($feature['medium']) && $feature['medium'] === 'video' && $request->file('video')) {
             $feature['mediaLocation'] = $request->file('video')
                 ->storeAs('video', $request['slug'] . ".mp4", 'public');
         }
 
-        if ($feature['medium'] === 'image' && $request->file('image')) {
+        if (isset($feature['medium']) && $feature['medium'] === 'image' && $request->file('image')) {
             $path = $request->file('image')
                 ->storeAs('images', $request['slug'] . ".png", 'public');
             $feature['mediaLocation'] = $path;
