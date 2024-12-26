@@ -109,15 +109,15 @@ class FeatureController extends Controller
             $path = $request->file('image')
                 ->storeAs('images', $request['slug'] . ".png", 'public');
             $feature['mediaLocation'] = $path;
-            Log::debug($path);
+            Log::debug('storeFiles::$path', [$path]);
         }
 
         if ($request->file('thumbnail')) {
             Log::debug('have thumbnail');
-            Log::debug($request['slug']);
+            Log::debug('storeFiles::$request[\'slug\']', [$request['slug']]);
             $result = $feature['thumbLocation'] = $request->file('thumbnail')
                 ->storeAs('thumbnails', $request['slug'] . "-thumb.png", 'public');
-            Log::debug($result);
+            Log::debug('storeFiles::$thumbnail', [$result]);
 
         }
 
