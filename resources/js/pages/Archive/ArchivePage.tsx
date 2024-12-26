@@ -2,10 +2,11 @@ import { ArchiveStack } from '@/components/ArchiveStack/ArchiveStack';
 import { config } from '@/config/config';
 import FrontLayout from '@/layouts/FrontLayout';
 import { Head } from '@inertiajs/react';
-import { Box, Center, Container, Flex, Loader, Title } from '@mantine/core';
+import {  Center, Container, Flex, Loader, Title } from '@mantine/core';
 import _ from 'lodash';
 import { Feature, Section } from '@/types/toadstones';
 import classes from './ArchivePage.module.css';
+import React from 'react';
 
 
 
@@ -15,10 +16,19 @@ type ArchivePageTypes = {
 }
 
 export default function ArchivePage({ section, features }: ArchivePageTypes) {
-    const formattedFeatures = _.orderBy(features, ['launch'], ['desc']);
+    const ordered = _.orderBy(features, ['launch'], ['desc']);
     const archiveTitle = section ? `${section.title} Archive` : 'Archive';
 
-    return _.isEmpty(formattedFeatures) ? (
+    const padding = () => {
+        const toAdd = (ordered.length - 1)%3;
+        const elements: React.JSX.Element[] = [];
+        for (let i = 0; i < toAdd; i++) {
+            elements.push(<div key={`padding-${i}`}>&nbsp;</div>)
+        }
+        return elements;
+    }
+
+    return _.isEmpty(ordered) ? (
         <Center mt="5rem">
             <Loader />
         </Center>
@@ -35,8 +45,9 @@ export default function ArchivePage({ section, features }: ArchivePageTypes) {
                     gap="0"
                     mt="2rem"
                 >
-                    {formattedFeatures.map((feature) => (
+                    {ordered.map((feature, idx) => (
                             <ArchiveStack
+                                position={idx}
                                 key={feature.slug}
                                 section={feature.section_title}
                                 launch={feature.launch}
@@ -45,6 +56,7 @@ export default function ArchivePage({ section, features }: ArchivePageTypes) {
                                 destination={`/p/${feature.slug}`}
                             />
                     ))}
+                    {padding()}
                 </Flex>
             </Container>
         </FrontLayout>

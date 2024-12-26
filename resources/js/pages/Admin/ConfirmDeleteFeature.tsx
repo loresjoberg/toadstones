@@ -22,14 +22,15 @@ interface DeleteValues  {
 }
 export default function ConfirmDeleteFeature({ feature }:ConfirmDeleteFeatureProps) {
     const submitRoute = (values: RequestPayload) => {
-        router.post('/api/features', values);
+        console.log('ConfirmDeleteFeature::submitRoute',values)
+        router.post('/api/features/'+ feature.slug, values);
     };
 
     const form = useForm({
         mode: 'uncontrolled',
         initialValues: {
             slug: feature.slug,
-            _method: 'delete'
+            _method: 'DELETE'
         },
         validate: {
             slug: (value) => (value ? null : 'Slug Required')

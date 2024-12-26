@@ -1,6 +1,7 @@
 import { Link } from '@inertiajs/react';
 import { Anchor, Group, Image, Stack, Text, Title } from '@mantine/core';
 import dayjs from 'dayjs';
+import classes from '@/pages/Home.module.css';
 
 interface ArchiveStackProps {
     thumb?: string;
@@ -9,13 +10,16 @@ interface ArchiveStackProps {
     section?: string;
     launch: string;
     destination: string;
+    position: number;
 }
 
-export function ArchiveStack({ thumb,
+export function ArchiveStack({
+                                 thumb,
                                  title,
                                  section,
                                  launch,
-                                 destination
+                                 destination,
+                                 position
                              }: ArchiveStackProps) {
 
 
@@ -31,6 +35,8 @@ export function ArchiveStack({ thumb,
                     src={thumb}
                     alt={title}
                     style={{ borderRadius: '0 3rem 0 3rem' }}
+                    className={`${classes[`featureImage_${position + 1}`]}`}
+
                 />
             </Anchor>
             <Group mt="0.25rem" justify="space-between">

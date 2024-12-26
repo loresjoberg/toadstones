@@ -22,7 +22,7 @@ export function ThumbStack({ feature, position }: ThumbStackProps) {
                        src={`${config.mediaBase}/${feature.thumbLocation}`}
                        alt={feature.title}
                        bd="1px solid black"
-                       className={`${classes[`featureImage_${position + 1}`]} ${classes.featureImage}`}
+                       className={`${classes[`featureImage_${position + 1}`]}`}
                 />
             </Anchor>
             <Text size="1rem"

@@ -19,7 +19,12 @@ export function RelatedFeatures({ features, mainFeature }: RelatedFeaturesProps)
     };
 
 
-    return (<Flex justify="space-between" direction="row">
+    return (<Flex
+        wrap="wrap"
+        gap="1rem"
+        mt="2rem"
+        justify="flex-start"
+        direction="row">
         {
             getRelatedFeatures().map((feature) => {
                 return <ThumbStack key={feature.slug} feature={feature} position={-1} />;

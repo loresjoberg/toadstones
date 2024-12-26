@@ -7,6 +7,7 @@ interface ThumbRowsProps {
 }
 
 export function ThumbRows({ features }: ThumbRowsProps) {
+
     return (
         <Flex direction="row" justify="space-between" wrap="wrap">
             {features.map((feature, position) => {
