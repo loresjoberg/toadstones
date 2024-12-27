@@ -2,7 +2,8 @@ import { config } from '@/config/config';
 import classes from '@/pages/Home.module.css';
 import { Feature } from '@/types/toadstones';
 import { Link } from '@inertiajs/react';
-import { Anchor, Image, Stack, Text, Title } from '@mantine/core';
+import { Anchor, Stack, Text, Title } from '@mantine/core';
+import { ThumbImage } from '@/components/ThumbImage/ThumbImage';
 
 interface ThumbStackProps {
     feature: Feature;
@@ -10,6 +11,8 @@ interface ThumbStackProps {
 }
 
 export function ThumbStack({ feature, position }: ThumbStackProps) {
+
+    const positionSuffix = position%6
     return (
         <Stack
             key={feature.slug}
@@ -18,12 +21,9 @@ export function ThumbStack({ feature, position }: ThumbStackProps) {
             className={classes.featureStack}
         >
             <Anchor component={Link} href={config.featureUrlPrefix + feature.slug}>
-                <Image fit="contain"
-                       src={`${config.mediaBase}/${feature.thumbLocation}`}
-                       alt={feature.title}
-                       bd="1px solid black"
-                       className={`${classes[`featureImage_${position + 1}`]}`}
-                />
+                <ThumbImage src={`${config.mediaBase}/${feature.thumbLocation}`}
+                            title={feature.title}
+                            classes={`${classes[`featureImage_${positionSuffix + 1}`]}`} />
             </Anchor>
             <Text size="1rem"
                   fw={700}

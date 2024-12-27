@@ -2,6 +2,7 @@ import { Link } from '@inertiajs/react';
 import { Anchor, Group, Image, Stack, Text, Title } from '@mantine/core';
 import dayjs from 'dayjs';
 import classes from '@/pages/Home.module.css';
+import { ThumbImage } from '@/components/ThumbImage/ThumbImage';
 
 interface ArchiveStackProps {
     thumb?: string;
@@ -27,17 +28,14 @@ export function ArchiveStack({
         return dayjs(launch).format('D MMMM, YYYY');
     };
 
+    const positionSuffix = position%6
+
     return (
         <Stack gap="0" mb="0.75rem">
             <Anchor component={Link} href={destination}>
-                <Image
-                    fit="contain"
-                    src={thumb}
-                    alt={title}
-                    style={{ borderRadius: '0 3rem 0 3rem' }}
-                    className={`${classes[`featureImage_${position + 1}`]}`}
-
-                />
+                <ThumbImage src={thumb}
+                            title={title}
+                            classes={`${classes[`featureImage_${positionSuffix + 1}`]}`} />
             </Anchor>
             <Group mt="0.25rem" justify="space-between">
                 <Text
@@ -69,7 +67,6 @@ export function ArchiveStack({
                     {title}
                 </Title>
             </Anchor>
-
         </Stack>
     );
 }

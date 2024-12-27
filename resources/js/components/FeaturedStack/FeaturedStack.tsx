@@ -1,7 +1,8 @@
 import { config } from '@/config/config';
 import { Feature } from '@/types/toadstones';
 import { Link } from '@inertiajs/react';
-import { Anchor, Image, Stack, Text, Title } from '@mantine/core';
+import { Anchor, Stack, Text, Title } from '@mantine/core';
+import { ThumbImage } from '@/components/ThumbImage/ThumbImage';
 
 interface FeaturedStackProps {
     feature: Feature;
@@ -11,12 +12,9 @@ export function FeaturedStack({ feature }: FeaturedStackProps) {
     return (
         <Stack gap={0}>
             <Anchor component={Link}  href={config.featureUrlPrefix + feature.slug}>
-                <Image
-                    fit="contain"
-                    style={{ border: '1px solid black' }}
-                    src={`${config.mediaBase}/${feature.thumbLocation}`}
-                    alt={feature.title}
-                />
+                <ThumbImage src={`${config.mediaBase}/${feature.thumbLocation}`}
+                            title={feature.title}
+                            classes={''} />
             </Anchor>
             <Text
                 fz="1.25rem"
