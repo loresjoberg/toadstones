@@ -46,7 +46,7 @@ class FeatureController extends Controller
     {
         $this->storeFiles($request);
 
-        Log::debug('store::$request->all()', [$request->all()]);
+//        Log::debug('store::$request->all()', [$request->all()]);
         Feature::create($request->all());
 
         return to_route('dashboard');
