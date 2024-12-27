@@ -16,7 +16,7 @@ export default function FrontLayout({ children }: PropsWithChildren) {
             <Container
                 mb="xl"
                 fluid
-                style={{ maxWidth: stageWidth, minHeight: '80vh' }}
+                style={{ maxWidth: stageWidth }}
             >
                 {children}
             </Container>

@@ -19,7 +19,7 @@ export default function ArchivePage({ section, features }: ArchivePageTypes) {
     const ordered = _.orderBy(features, ['launch'], ['desc']);
     const archiveTitle = section ? `${section.title} Archive` : 'Archive';
 
-    const padding = () => {
+    const thumbPadding = () => {
         const toAdd = (ordered.length - 1)%3;
         const elements: React.JSX.Element[] = [];
         for (let i = 0; i < toAdd; i++) {
@@ -56,7 +56,7 @@ export default function ArchivePage({ section, features }: ArchivePageTypes) {
                                 destination={`/p/${feature.slug}`}
                             />
                     ))}
-                    {padding()}
+                    {thumbPadding()}
                 </Flex>
             </Container>
         </FrontLayout>
