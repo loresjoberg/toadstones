@@ -38,6 +38,7 @@
         "@mantine/dropzone": "^7.15.1",
         "@mantine/form": "^7.15.1",
         "@mantine/hooks": "^7.15.1",
+        "@mantine/notifications": "^7.15.2",
         "@tabler/icons-react": "^3.26.0",
         "@types/lodash": "^4.17.13",
         "@types/prop-types": "^15.7.14",

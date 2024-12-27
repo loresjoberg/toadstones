@@ -1,14 +1,17 @@
 import { FeatureForm } from '@/components/Forms/FeatureForm/FeatureForm';
-import { router } from '@inertiajs/react';
+import { router, usePage } from '@inertiajs/react';
 import { RequestPayload } from '@inertiajs/core';
 import { Box, Container, Title } from '@mantine/core';
 import AuthenticatedLayout from '@/layouts/AuthenticatedLayout';
 import { Feature, FeatureFormValues } from '@/types/toadstones';
+import { NotificationData, notifications } from '@mantine/notifications';
 
 interface EditFeatureProps {
     feature: Feature
 }
 export default function EditFeature({ feature }: EditFeatureProps) {
+    const { flash } = usePage().props
+
     const initialValues = {
         title: feature.title,
         slug: feature.slug,
@@ -30,6 +33,14 @@ export default function EditFeature({ feature }: EditFeatureProps) {
         console.log('submitRoute.values', values)
         router.post('/api/features/' + values.slug, values as RequestPayload);
     };
+
+    if (flash.message) {
+        notifications.show({
+            color: 'green',
+            title: flash.message as string,
+        } as NotificationData)
+    }
+
 
     return (<AuthenticatedLayout>
             <Container size="sm">

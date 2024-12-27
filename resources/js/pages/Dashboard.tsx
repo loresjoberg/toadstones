@@ -1,10 +1,15 @@
 import AuthenticatedLayout from '@/layouts/AuthenticatedLayout';
-import { Head, Link } from '@inertiajs/react';
-import { Anchor, Stack, Title } from '@mantine/core';
+import { Head, Link, usePage } from '@inertiajs/react';
+import { Alert, Anchor, Stack, Title } from '@mantine/core';
 import { config } from '@/config/config';
+import { FaVideo } from 'react-icons/fa';
+
+
+
 
 export default function Dashboard() {
-    console.log('Dashboard');
+    const { flash } = usePage().props
+
     return (
         <AuthenticatedLayout
             header={
@@ -14,7 +19,11 @@ export default function Dashboard() {
             }
         >
             <Head title={`${config.siteName} Dashboard`} />
-
+            {flash.message && (
+                <Alert variant="light" color="blue" title="Success" icon={FaVideo}>
+                    {flash.message}
+                </Alert>
+            )}
             <div className="py-12">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">

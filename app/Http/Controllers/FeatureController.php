@@ -44,12 +44,16 @@ class FeatureController extends Controller
 
     public function store(FeatureStoreRequest $request): RedirectResponse
     {
-        $this->storeFiles($request);
+        Log::debug('store::$request->get(\'medium\')', [$request->get('medium')]);
+        Log::debug('store::$request->get(\'slug\')', [$request->get('slug')]);
+        $feature = $request->toArray();
+        Log::debug('feature', [$feature]);
 
-//        Log::debug('store::$request->all()', [$request->all()]);
-        Feature::create($request->all());
+        $feature = $this->storeFiles($request);
 
-        return to_route('dashboard');
+        Feature::create($feature);
+
+        return redirect()->route('feature.edit',['slug' => $feature['slug']])->with('message', 'Created');
     }
 
 
@@ -61,7 +65,7 @@ class FeatureController extends Controller
         $feature = $request->toArray();
         Log::debug('feature', [$feature]);
         if (!empty($feature['launch'])) {
-            $feature['launch'] =  date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $feature['launch'])));
+            $feature['launch'] = date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $feature['launch'])));
         }
 
         $feature = $this->storeFiles($request);
@@ -75,7 +79,8 @@ class FeatureController extends Controller
 
         $currentFeature->save();
 
-        return to_route('dashboard');
+        return redirect()->route('feature.edit',['slug' => $slug])->with('message', 'Updated');
+
     }
 
     /**
@@ -87,7 +92,7 @@ class FeatureController extends Controller
 
         $feature->delete();
 
-        return to_route('dashboard');
+        return redirect()->route('dashboard')->with('message', 'Deleted');
     }
 
     /**
@@ -97,7 +102,7 @@ class FeatureController extends Controller
      */
     public function storeFiles(Request $request): array
     {
-        Log::debug('storeFiles::$request->file("image"))',[$request->file("image")]);
+        Log::debug('storeFiles::$request->file("image"))', [$request->file("image")]);
         $feature = $request->toArray();
 
         if (isset($feature['medium']) && $feature['medium'] === 'video' && $request->file('video')) {
