@@ -97,6 +97,10 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
         },
         onValuesChange: (values) => {
             console.log('onValuesChange', values);
+            if (values.medium) {
+                setFeatureMedium(values.medium);
+            }
+
             if (values.title && !form.isTouched('slug') && action !== 'edit') {
                 console.log('Slug', values.slug, form.isTouched('slug'));
                 values.slug = changeCase.kebabCase(values.title);
@@ -105,16 +109,18 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
             console.log('section_id & form', typeof values.section_id, form.isTouched('medium'));
 
             if (parseInt(values.section_id) === 2 && !form.isTouched('medium')) {
+                setFeatureMedium('html');
                 form.setFieldValue('medium', 'video');
             }
 
             if ((parseInt(values.section_id) === 1 || parseInt(values.section_id) === 4)
                 && !form.isTouched('medium')) {
-
+                setFeatureMedium('image');
                 form.setFieldValue('medium', 'image');
             }
 
             if ((parseInt(values.section_id) === 3) && !form.isTouched('medium')) {
+                setFeatureMedium('html');
                 form.setFieldValue('medium', 'html');
             }
 
@@ -126,9 +132,7 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
                 setImageSrc(URL.createObjectURL(values.image));
             }
 
-            if (values.medium) {
-                setFeatureMedium(values.medium);
-            }
+
         }
     });
 
