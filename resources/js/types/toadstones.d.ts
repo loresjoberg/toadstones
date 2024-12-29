@@ -46,7 +46,7 @@ export interface SelectorOption {
 export interface FeatureFormValues {
     title: string;
     slug: string;
-    section_id: number;
+    section_id: string;
     medium: string;
     html: string;
     image?: File;
