@@ -126,9 +126,9 @@ export function FeatureForm({ initialValues, submitRoute, action }: FeatureFormP
                 setImageSrc(URL.createObjectURL(values.image));
             }
 
-            // if (values.medium) {
-            //     setFeatureMedium(values.medium);
-            // }
+            if (values.medium) {
+                setFeatureMedium(values.medium);
+            }
         }
     });
 
