@@ -44,5 +44,6 @@ export function ThumbStack({ feature, position }: ThumbStackProps) {
                 </Title>
             </Anchor>
         </Stack>
+
     );
 }

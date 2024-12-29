@@ -40,8 +40,6 @@ export default function EditFeature({ feature }: EditFeatureProps) {
             title: flash.message as string,
         } as NotificationData)
     }
-
-
     return (<AuthenticatedLayout>
             <Container size="sm">
                 <Title>Edit Feature</Title>
