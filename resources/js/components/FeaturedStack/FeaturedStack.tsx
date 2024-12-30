@@ -1,7 +1,7 @@
 import { config } from '@/config/config';
 import { Feature } from '@/types/toadstones';
 import { Link } from '@inertiajs/react';
-import { Anchor, AspectRatio, BackgroundImage, Box, Flex, Stack, Text, Title } from '@mantine/core';
+import { Anchor, AspectRatio, BackgroundImage, Box, Stack, Text, Title } from '@mantine/core';
 import classes from './FeaturedStack.module.css';
 
 interface FeaturedStackProps {
@@ -18,12 +18,10 @@ export function FeaturedStack({ feature }: FeaturedStackProps) {
                         style={{ border: '1px solid black' }}
                     >
                         <Box className={classes.innerImage}>
-                            <Box style={{ }}
-                                 className={classes.textHolder}>
+                            <Box className={classes.textHolder}>
                                 <Text
                                     className={classes.sectionTitle}
                                     c="highlight.3"
-                                    mt="0.25rem"
                                 >
                                     {feature.section_title}
                                 </Text>
