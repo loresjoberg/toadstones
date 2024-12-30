@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { Anchor, Group, Image, Stack, Text, Title } from '@mantine/core';
+import { Anchor, Group, Stack, Text, Title } from '@mantine/core';
 import dayjs from 'dayjs';
 import classes from '@/pages/Home.module.css';
 import { ThumbImage } from '@/components/ThumbImage/ThumbImage';
@@ -37,9 +37,9 @@ export function ArchiveStack({
                             title={title}
                             classes={`${classes[`featureImage_${positionSuffix + 1}`]}`} />
             </Anchor>
-            <Group mt="0.25rem" justify="space-between">
+            <Group gap="0" mt="0.25rem" justify="space-between">
                 <Text
-                    size="sm"
+                    className={classes.sectionTitle}
                     fw={700}
                     ff="PT Sans Narrow"
                     c="primary.3"
@@ -48,7 +48,7 @@ export function ArchiveStack({
                     {section}
                 </Text>
                 <Text
-                    size="sm"
+                    className={classes.sectionTitle}
                     fw={700}
                     ff="PT Sans Narrow"
                     c="primary.3"
@@ -59,7 +59,7 @@ export function ArchiveStack({
             </Group>
             <Anchor component={Link} href={destination} c="secondary.6">
                 <Title order={3}
-                       fz="1.5rem"
+                       className={classes.featureTitle}
                        ff="PT Sans Narrow"
                        lh={1.2}
                        fw="bold"

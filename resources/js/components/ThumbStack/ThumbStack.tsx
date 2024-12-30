@@ -25,7 +25,8 @@ export function ThumbStack({ feature, position }: ThumbStackProps) {
                             title={feature.title}
                             classes={`${classes[`featureImage_${positionSuffix + 1}`]}`} />
             </Anchor>
-            <Text size="1rem"
+            <Text className={classes.sectionTitle}
+                size="1rem"
                   fw={700}
                   ff="PT Sans Narrow"
                   mt="0.5rem"
@@ -35,6 +36,7 @@ export function ThumbStack({ feature, position }: ThumbStackProps) {
             </Text>
             <Anchor component={Link} href={config.featureUrlPrefix + feature.slug} c="secondary.6">
                 <Title
+                    className={classes.featureTitle}
                     order={3}
                     size="1.5rem"
                     ff="PT Sans Narrow"

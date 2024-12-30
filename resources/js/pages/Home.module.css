@@ -6,6 +6,17 @@
     }
 }
 
+.featureStack {
+
+    width: 46.5%;
+
+    @media (min-width: 600px) {
+        width: 31%
+
+    }
+
+}
+
 .mainColumn {
     flex-shrink: 1;
     flex-basis: 75%;
@@ -23,15 +34,31 @@
     flex-wrap: wrap;
 }
 
-.featureStack {
-
-    width: 46.5%;
+.sectionTitle {
+    font-size: 0.85rem;
+    line-height: 1.1;
 
     @media (min-width: 600px) {
-        width: 31%
-
+        font-size: 1rem;
     }
 
+    @media (min-width: 900px) {
+        font-size: 1.25rem;
+    }
+}
+
+.featureTitle {
+    font-size: 1.25rem;
+    line-height: 1;
+    margin-top: 0.125em;
+
+    @media (min-width: 600px) {
+        font-size: 1.375rem;
+    }
+
+    @media (min-width: 900px) {
+        font-size: 1.5rem;
+    }
 }
 
 .popularFeatures .featureStack {
