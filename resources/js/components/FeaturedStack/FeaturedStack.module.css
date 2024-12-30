@@ -1,0 +1,40 @@
+.mainFeatureCard .innerImage {
+    width: 100%;
+    height: 100%;
+}
+
+.mainFeatureCard .innerImage .textHolder {
+    font-family: 'PT Sans Narrow', sans-serif;
+    text-shadow: 0.075em 0.075em 0.075em rgba(0,0,0,1);
+    padding: 1rem;
+    background-color: rgba(44,38,110,0.75);
+    position: absolute;
+    max-width: 18rem;
+    border-radius: 0 2rem 2rem 2rem;
+}
+
+.mainFeatureCard .innerImage .featureTitle {
+
+    @media (min-width: 600px) {
+        font-size: 2rem;
+    }
+
+    @media (min-width: 900px) {
+        font-size: 2.5rem;
+    }
+
+}
+
+
+.mainFeatureCard .innerImage .sectionTitle {
+    font-size: 1rem;
+
+    @media (min-width: 600px) {
+        font-size: 1.125rem;
+    }
+
+    @media (min-width: 900px) {
+        font-size: 1.24rem;
+    }
+
+}
