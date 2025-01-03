@@ -66,11 +66,13 @@ export function FileUpload({ type, fileKey, file, label, src, updateForm }: File
 
     };
 
+    const accepted = type === 'video' ? "video/mp4" : "image/png,image/jpeg";
+
 
     return (
         <Group>
             <FileButton
-                accept="image/png,image/jpeg"
+                accept={accepted}
                 radius="xl"
                 label={label}
                 w="30%"
