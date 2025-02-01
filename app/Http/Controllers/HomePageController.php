@@ -13,7 +13,7 @@ class HomePageController extends Controller
 {
     public function show(): Response
     {
-        $features = Feature::where('launch', '<', Carbon::now());
+        $features = Feature::where('launch', '<', Carbon::now())->get();
         return Inertia::render('HomePage', ['features' => $features]);
     }
 
