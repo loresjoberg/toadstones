@@ -13,7 +13,7 @@ class FeaturePageController extends Controller
 {
     public function show($slug): Response
     {
-        $features = Feature::where('slug', $slug)->where('launch', '<', Carbon::now())->get();
+        $features = Feature::where('slug', $slug)->where('launch', '<', Carbon::now())->orderBy('launch', 'DESC')->get();
         return Inertia::render('Features/FeaturePage', ['feature' => $features[0], 'features' => $features]);
     }
 
